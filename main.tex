@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper,twoside,openright]{book}
+
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{style/isi-lm}
+\usepackage{cleveref}
+
+\input{style/isi-lst}
+
+%--------------------------------------------------------------------
+%---------------------- INFORMAZIONI SULLA TESI ---------------------
+%--------------------------------------------------------------------
+
+\universita{Alma Mater Studiorum -- Università di Bologna}
+\campus{Campus of Cesena}
+\dipartimento{Computer Science and Engineering Department}
+\cdl{Second Cycle Degree in Computer Science and Engineering}
+
+\titolo{Visual Programming Paradigm for Hypermedia Multi-Agent Systems}
+\materia{Pervasive Computing}
+
+\laureando{Alessandro Marcantoni}
+
+\relatore[Prof.]{Alessandro Ricci}
+\correlatorea[Prof.]{Simon Mayer}
+\correlatoreb[Dott.]{Samuele Burattini}
+
+\annoaccademico{2021 -- 2022}
+
+\parolechiave{Multi-Agent Systems}{Visual Programming}{Organization}{Hypermedia}{Web IDE}
+
+\dedica{To the ones who have always believed in me}
+
+\makeindex
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+
+\input{thesis-parts/00-introduction.tex}
+	
+\mainmatter
+
+\pagestyle{fancy} 
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+
+\input{thesis-parts/01-context.tex}
+\input{thesis-parts/02-state-of-the-art.tex}
+\input{thesis-parts/03-requirements.tex}
+\input{thesis-parts/04-design.tex}
+\input{thesis-parts/05-development.tex}
+\input{thesis-parts/06-evaluation.tex}
+
+\input{thesis-parts/conclusions.tex}	
+\input{thesis-parts/acknowledgements.tex}
+	
+\backmatter	
+
+\bibliography{bibliography}{}
+\bibliographystyle{plain}
+
+\end{document}
