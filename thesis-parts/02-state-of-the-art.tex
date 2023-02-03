@@ -194,6 +194,44 @@ Indeed, sometimes two or more organizational paradigms may be combined to form a
 \label{table:orgs-advantages-disadvantages}
 \end{table}
 
-\subsection{The MOISE+ Model}
+\subsection{The JaCaMo Platform}
+Regarding the engineering and implementation of MAS, one of the reference technologies is the JaCaMo platform~\cite{Boissier2016}, which supports practical programming based on the first-class abstractions introduced before to develop organized agents situated in a shared environment.
+JaCaMo is built on top of three other existing platforms:
+\begin{itemize}
+    \item \jason{}: provides a programming language to code autonomous intelligent agents based on the BDI (Belief, Desire, Intention) architecture~\cite{bordini2007programming}\cite{Bratman1987-BRAIPA}.
+    \item \cartago{}: as the way to define the environment in which agents will be situated, following the \textit{A\&A} metamodel~\cite{Ricci2009}.
+    \item \moise{}: based on the \moiseplus{} model~\cite{10.1145/544741.544858}, it allows the definition and management of organizations within the systems~\cite{doi:10.1504/IJAOSE.2007.016266}.
+\end{itemize}
+
+Since the JaCaMo platform was chosen as the enabling tool supporting the instantiation of the organizations built with the visual language developed, the latter takes inspiration from the \moiseplus{} model and its concepts, which are briefly described in the following section.
+
+\subsubsection{The \moiseplus{} Model}
+Just like the \moise{} model~\cite{hannoun2000}, which it extends, the \moiseplus{} model aims at providing a way to cope with both the agent-centered and organization-centered approaches to the design of MAS.
+This way, the ability to manage the complexity taken from the organization-centered approach, and the flexibility taken from the agent-centered approach, can be combined to face the constantly growing complexity of MAS applications.
+Indeed, the MAS designer can specify an \textit{organization specification} (OS), which defines an ``a priori'' set of constraints and cooperation patterns imposed on the agents; on the other hand, agents themselves can reason about and modify the \textit{organization entity} (OE), which is the actual instantiation of the organization on the agents.
+
+In addition, the \moiseplus{} model proposes an organizational modeling language that explicitly decomposes the specification of organizations into \textit{structural}, \textit{functional}, and \textit{deontic} dimensions~\cite{doi:10.1504/IJAOSE.2007.016266}\cite{10.1145/544741.544858}.
+
+The structural dimension specifies the \textit{roles}, \textit{groups}, and \textit{links} of the organization.
+The definition of roles states that when agents decide to play a role, they are accepting some behavioral constraints related to the role.
+
+The functional dimension specifies how the \textit{global collective goals} should be achieved.
+Specifically, how these goals are decomposed in \textit{plans}, grouped in coherent sets by \textit{missions}, and how are distributed to the agents.
+The decomposition of global goals results in a goal tree, called \textit{scheme}, where the leaf goals can be achieved directly by the agents.
+
+Finally, the deontic dimension serves as a binding between the structural and functional dimensions, specifying the roles' \textit{permissions} and \textit{obligations} for missions.
+
+The infrastructure adopted by the \moiseplus{} model is called \oraformas{} (Organizational Artifacts for Multi-Agent Systems)~\cite{hubner2010} which conceives \textit{organizational agents} that control, manage and adapt the organization operating on \textit{organizational artifacts}, thus adhering to the \textit{A\&A} metamodel, such as \texttt{OrgBoard}, \texttt{GroupBoard}, \texttt{SchemeBoard}, and \texttt{NormativeBoard}.
+
+The next section illustrates how the above artifacts can be used in the deployment of an organization.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/org-artifacts.png}
+    \caption{Organizational artifacts in \oraformas{} with their interface including operations, observable properties, and link interfaces. Adopted from~\cite{hubner2010}.}
+    \label{fig:org-artifacts}
+\end{figure}
+
+\subsubsection{\oraformas{} in Action}
 
 \section{Hypermedia Multi-Agent Systems}
