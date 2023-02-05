@@ -221,7 +221,7 @@ The decomposition of global goals results in a goal tree, called \textit{scheme}
 
 Finally, the deontic dimension serves as a binding between the structural and functional dimensions, specifying the roles' \textit{permissions} and \textit{obligations} for missions.
 
-The infrastructure adopted by the \moiseplus{} model is called \oraformas{} (Organizational Artifacts for Multi-Agent Systems)~\cite{hubner2010} which conceives \textit{organizational agents} that control, manage and adapt the organization operating on \textit{organizational artifacts}, thus adhering to the \textit{A\&A} metamodel, such as \texttt{OrgBoard}, \texttt{GroupBoard}, \texttt{SchemeBoard}, and \texttt{NormativeBoard}.
+The infrastructure adopted by the \moiseplus{} model is called \oraformas{} (Organizational Artifacts for Multi-Agent Systems)~\cite{hubner2010} which conceives \textit{organizational agents} that control, manage and adapt the organization operating on \textit{organizational artifacts}, thus adhering to the \textit{A\&A} metamodel, such as \textsf{OrgBoard}, \textsf{GroupBoard}, \textsf{SchemeBoard}, and \textsf{NormativeBoard}.
 
 The next section illustrates how the above artifacts can be used in the deployment of an organization.
 
@@ -233,5 +233,33 @@ The next section illustrates how the above artifacts can be used in the deployme
 \end{figure}
 
 \subsubsection{\oraformas{} in Action}
+When a set of agents wants to coordinate their actions to achieve a common goal, they can do it, for instance, through the following steps:
+\begin{enumerate}
+    \item One of the agents, which is also an \textit{organizational agent}, creates an \textsf{OrgBoard} artifact based on a specification.
+    \item The organizational agent creates a \textsf{GroupBoard} artifact for each group of agents that will be part of the organization.
+    Once the \textsf{GroupBoard} is created,  the artifact registers itself in the \textsf{OrgBoard} exploiting the latter's link interface.
+    \item All the other agents get notified about the new artifacts and therefore may decide to adopt a role in one of the groups.
+    They can do so using the \textsf{adoptRole} operation of the \textsf{GroupBoard} artifact.
+    \item The organizational agent can now create a \textsf{SchemeBoard} artifact to start the organization's collective goals.
+    As for the \textsf{GroupBoard}, the \textsf{SchemeBoard} artifact registers itself in the \textsf{OrgBoard}.
+    As every \textsf{SchemeBoard} has one \textsf{NormativeBoard}, the latter is created automatically and linked to the former.
+    \item Once the \textsf{SchemeBoard} is created, obligations and permissions are computed and verified by the \textsf{NormativeBoard}.
+    Agents can now commit to their missions according to the \textsf{NormativeBoard} rules.
+    \item Once the scheme is well formed, the goals of the scheme can be achieved by the agents.
+\end{enumerate}
 
 \section{Hypermedia Multi-Agent Systems}
+The current technological landscape brings new challenges to the engineering of MAS such as the support of large-scale open systems, and the support of heterogeneous agents and humans in the loop.
+
+\subsection{The World Wide Web}
+The Web has had remarkable success as a worldwide and long-lived system of people, providing them with a \textit{distributed hypermedia environment}, composed of interrelated Web pages, that they can navigate and use in pursuit of their goals.
+
+No doubt REST (REpresentational State Transfer), the architectural style of the Web~\cite{fielding2000}, is one of the enabling factors of the above characteristics.
+REST consists of a set of architectural constraints, such as \textit{client-server} and \textit{stateless} interaction, \textit{uniform interface}.
+% Since the World Wide Web (WWW) is claimed to be one of the most successful middleware for the development of distributed systems, and with the recent focus on hypermedia-driven APIs and the Web of Things and Linked Data initiatives, it can be used as a basis for the engineering of MAS.
+
+\subsection{Web-based Multi-Agent Systems}
+
+% Early Web-based MAS
+% Why they were not successful
+% Hypermedia MAS
