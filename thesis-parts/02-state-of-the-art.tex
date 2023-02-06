@@ -255,11 +255,31 @@ The current technological landscape brings new challenges to the engineering of 
 The Web has had remarkable success as a worldwide and long-lived system of people, providing them with a \textit{distributed hypermedia environment}, composed of interrelated Web pages, that they can navigate and use in pursuit of their goals.
 
 No doubt REST (REpresentational State Transfer), the architectural style of the Web~\cite{fielding2000}, is one of the enabling factors of the above characteristics.
-REST consists of a set of architectural constraints, such as \textit{client-server} and \textit{stateless} interaction, \textit{uniform interface}.
-% Since the World Wide Web (WWW) is claimed to be one of the most successful middleware for the development of distributed systems, and with the recent focus on hypermedia-driven APIs and the Web of Things and Linked Data initiatives, it can be used as a basis for the engineering of MAS.
+REST consists of a set of architectural constraints, such as \textit{client-server} and \textit{stateless} interaction, and \textit{uniform interface}.
+To achieve a uniform interface between components, interaction in REST is driven by \textit{hypermedia}, a constraint also known as \textit{Hypermedia As the Engine of Application State (HATEOAS)} that allows loose coupling among components~\cite{Varanasi2015}.
+
+According to HATEOAS, a typical Web application, which is composed of multiple hyperlinked Web pages, can be seen as a finite state machine where each page represents a state and hyperlinks between pages represent transitions between states.
+Indeed, given the URI of one of the pages, a client can dereference the URI to retrieve an HTML representation of that page.
+This action triggers a transition to a new application state and the client can now choose from a new set of Web pages; both the next reachable states and the knowledge required to transition to those states are conveyed to the client through hypermedia.
+Therefore, a client should be able to discover new resources and how to use them at runtime, allowing components to be deployed independently from one another.
 
 \subsection{Web-based Multi-Agent Systems}
+There has been extensive research on using the Web as an infrastructure for distributed MAS.
+The early approaches usually fall into one of the following two categories:
+\begin{itemize}
+    \item \textbf{The Web as a Transport Layer}: these systems use HTTP as a transport layer for the communication between agents; thus, they make limited use of the architectural properties of the Web.
+    \item \textbf{The Web as an Application Layer}: agent services are translated into Web services, which expose REST-like interfaces.
+    However, these systems do not support hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
+\end{itemize}
 
-% Early Web-based MAS
-% Why they were not successful
-% Hypermedia MAS
+The premature development of these approaches, not completely adhering to the Web architectural style, and the lack of crucial initiatives such as the Web of Things~\cite{wot}, together with the shortage of real-world applications, have hindered their widespread acceptance.
+
+\subsection{Hypermedia Multi-Agent Systems}
+The missing gap between MAS and the Web is filled by the integration between the environment in MAS and the Web architecture~\cite{ciortea2019}.
+Hypermedia MAS are systems composed of both people and autonomous agents situated in a shared \textit{hypermedia environment} that is distributed across the Web, that thus becomes an \textit{hypermedia application}.
+According to this approach, all the entities, agents and artifacts, are represented as Web resources possibly interrelated by hyperlinks.
+
+In contrast to typical endogenous environments, a hypermedia environment uses hypermedia to drive interaction in the MAS: agents navigate the environment at runtime to discover other entities in the MAS, as well as the means to interact with them, in a similar approach to the one used in the Web of Things Thing Description~\cite{wottd}.
+This reduces coupling and enhances the scalability and evolvability of the systems.
+
+% design principles for hypermedia MAS
