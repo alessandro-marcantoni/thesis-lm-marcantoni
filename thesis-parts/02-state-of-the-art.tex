@@ -73,7 +73,7 @@ The environment in MAS plays a dual role~\cite{weyns2007environment}:
     agents exploit the environment to share information and coordinate their behavior.
     Each agent follows simple behavioral rules, resulting in a collective behavior that is more complex than the sum of the individual behavior; this pattern resembles stigmergic systems in which agents coordinate their behavior through the manipulation of marks.
 \end{itemize}
-The environment not only enables the agents to interact with the deployment context, which they can access through sensors and actuators, but also provides them with external resources that they can exploit to achieve their goal.
+The environment not only enables the agents to interact with the deployment context, which they can access through sensors and actuators but also provides them with external resources that they can exploit to achieve their goal.
 
 The \textit{Agents \& Artifacts} (A\&A) conceptual framework~\cite{ricci2007artifacts} argues that, just like in human society, MAS environments should contain different kinds of objects, tools, and artifacts in general that agents can use to support their activities.
 This vision also constitutes a revolution from an engineering perspective as it encourages system designers to model the environment as a set of \textit{artifacts}, each of which encapsulates its intended purpose and exposes its observable state.
@@ -108,11 +108,11 @@ Here is provided a brief overview of the most common paradigms~\cite{horling_les
     However, since once formed coalitions may be treated as a single entity, it is possible to form a hierarchical structure by nesting coalitions.
     \item \textbf{Teams}: they consist of several cooperative agents that agreed to work together towards a common goal.
     Unlike coalitions, teams attempt to maximize the performance of the group as a whole, rather than the performance of individual agents.
-    This is usually achieved by assigning roles to the agents, which become responsible for specific tasks, and by providing the agents with representations of the shared goals, knowledge and plans.
+    This is usually achieved by assigning roles to the agents, which become responsible for specific tasks, and by providing the agents with representations of the shared goals, knowledge, and plans.
     \item \textbf{Congregations}: although similar to the latter two structures, they differentiate because are assumed to be long-lived and are not necessarily formed with a specific goal in mind.
     Indeed, congregations are formed among agents with similar o complementary characteristics to facilitate the process of finding partners for collaborations.
     \item \textbf{Societies}: they are open systems where agents of different kinds may come and go at will while the society persists, acting as an environment through which the participants meet and interact.
-    Societies impose on agents a set of constraints which are known as \textit{social laws}, \textit{norms} or \textit{conventions}.
+    Societies impose on agents a set of constraints which are known as \textit{social laws}, \textit{norms}, or \textit{conventions}.
     These represent rules by which agents must act and provide a level of consistency in behavior that facilitates the coexistence of possibly heterogeneous agents.
     \item \textbf{Federations}: they are groups of agents which have ceded some amount of autonomy to a single delegate who represents the group.
     The members of the group interact only with the delegate, who accepts skills and needs descriptions from them, which are then used to match with requests from delegates representing other groups.
@@ -272,14 +272,51 @@ The early approaches usually fall into one of the following two categories:
     However, these systems do not support hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
 \end{itemize}
 
-The premature development of these approaches, not completely adhering to the Web architectural style, and the lack of crucial initiatives such as the Web of Things~\cite{wot}, together with the shortage of real-world applications, have hindered their widespread acceptance.
+The premature development of these approaches, not completely adhering to the Web architectural style, and the lack of crucial initiatives such as the Web of Things, together with the shortage of real-world applications, have hindered their widespread acceptance.
 
-\subsection{Hypermedia Multi-Agent Systems}
+\subsection{The Web of Things}
+The Web of Things (WoT)~\cite{wot}, first introduced in 2007~\cite{guinard2011web}, is a set of W3C standards that aim to improve the interoperability and usability of the Internet of Things (IoT).
+The idea is to apply the architectural principles and standardized technologies of the Web to integrate the different technological stacks used by the current IoT \textit{things}.
+
+One of the fundamental building blocks of the WoT is the \textit{Thing Description (TD)}~\cite{wottd} that acts as a machine-readable manual for the interaction with the \textit{thing} it describes.
+The TD is based on the concept of \textit{interaction affordances} which refer to the perceived and actual properties of the \textit{thing} that determine how the latter can be used.
+The three types of affordances are:
+\begin{enumerate}
+    \item \textbf{Properties}: they represent the state of the \textit{thing} that can be read and/or written.
+    \item \textbf{Actions}: they allow the invocation of a function of the \textit{thing} which manipulates its state or triggers a process.
+    \item \textbf{Events}: they describe an event source that asynchronously pushes event data to the observers.
+\end{enumerate}
+The affordances of a \textit{thing} are intended in the hypermedia perspective of presenting information and control, suggesting to the clients the possible choices for interaction and how to use them in the form of hyperlinks.
+
+\subsection{The Bridge between the Web and Multi-Agent Systems}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{images/hypermedia-mas.png}
+    \caption{Hypermedia MAS. Adopted from~\cite{ciortea2019}.}
+    \label{fig:hypermedia-mas}
+\end{figure}
+
 The missing gap between MAS and the Web is filled by the integration between the environment in MAS and the Web architecture~\cite{ciortea2019}.
-Hypermedia MAS are systems composed of both people and autonomous agents situated in a shared \textit{hypermedia environment} that is distributed across the Web, that thus becomes an \textit{hypermedia application}.
-According to this approach, all the entities, agents and artifacts, are represented as Web resources possibly interrelated by hyperlinks.
+Hypermedia MAS are systems composed of both people and autonomous agents situated in a shared \textit{hypermedia environment} that is distributed across the Web, that thus becomes an \textit{hypermedia application}~\cite{ciortea2018}.
+According to this approach, all the entities, both agents and artifacts, are represented as Web resources possibly interrelated by hyperlinks.
 
-In contrast to typical endogenous environments, a hypermedia environment uses hypermedia to drive interaction in the MAS: agents navigate the environment at runtime to discover other entities in the MAS, as well as the means to interact with them, in a similar approach to the one used in the Web of Things Thing Description~\cite{wottd}.
+In contrast to typical endogenous environments, a hypermedia environment uses hypermedia to drive interaction in the MAS: agents navigate and crawl the environment at runtime to discover other entities in the MAS, as well as the means to interact with them, in an analogous approach to the one used in the Web of Things with the Thing Description.
 This reduces coupling and enhances the scalability and evolvability of the systems.
 
-% design principles for hypermedia MAS
+The three key design principles meant to ensure the proper use of hypermedia as a general mechanism for uniform interaction in MAS are the following~\cite{10.1007/978-3-030-25693-7_15}:
+\begin{enumerate}
+    \item \textbf{Uniform resource space}: all entities in a hypermedia MAS and relations among them should be represented in the hypermedia environment in a uniform, resource-oriented manner.
+    For instance, one agent could send a message to another by writing an RDF representation of the message in the hypermedia.
+    To receive messages, an agent could observe a resource that represents its mailbox in the hypermedia.
+    To turn on a light, an agent could manipulate the state of a resource that represents the light bulb in the hypermedia.
+    Anyways, interactions between agents and resources in their hypermedia environment should conform to the REST constraints.
+    \item \textbf{Single entry point}: given a single entry point into the environment of a hypermedia MAS, an agent should be able to discover the knowledge required to participate in the system by navigating the hypermedia.
+    The core idea is to minimize coupling by enabling system-wide discoverability as agents can crawl the hypermedia to discover what other agents, tools, or entities in the system can help them achieve their goals.
+    Equally important, agents can also discover in the hypermedia how to interact with entities through their affordances.
+    \item \textbf{Observability}: in a hypermedia MAS, any resource in the hypermedia environment that could be of interest to agents should be observable.
+    While the first two principles ensure the dynamic discovery of a hypermedia MAS via crawling, the latter promotes the use of mechanisms that allow agents to selectively observe entities of interest.
+    This is important to improve the scalability and handle larger environments.
+\end{enumerate}
+
+Engineers can choose to ignore one or more of these principles, but the MAS would most likely make limited use of the hypermedia and would not achieve uniform interaction, hindering the scalability and openness of the system.
