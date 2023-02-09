@@ -1,0 +1,14 @@
+<role id="role1" />
+<role id="role2">
+    <exends role="role1" />
+</role>
+
+<goal id="goal1" />
+<goal id="goal2" ds="description for goal2">
+    <argument id="arg1" />
+    <depends-on goal="goal1" />
+    <plan operator="sequence">
+        <goal id="goal3" />
+        <goal id="goal4" />
+    </plan>
+</goal>

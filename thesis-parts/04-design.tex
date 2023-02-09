@@ -1,6 +1,52 @@
-\chapter{Design}
+\chapter{Design}\label{design}
 
-\section{A Visual Language for Organizations}
+The following chapter describes the details concerning the design process of the system.
+
+The whole process was carried out with a step-by-step approach, starting from the design of the visual language and early prototypes of the development environment, proceeding with the storage backend, and finally concluding with the integration with the execution backend.
+
+Specifically, the design of the visual language and the development of the web-based IDE prototypes were carried out iteratively, in order to adopt a PDCA (Plan-Do-Check-Act) approach.
+The latter allowed receiving realistic feedback straight away, thus intercepting potential problems early on and speeding up the entire process.
+
+Due to the hard time constraint of the internship and to obtain ease of use, although sometimes trading off with expressivity, only a core subset of \moise{} features were implemented.
+This also implies that the system was not designed as a complete replacement of \moise{}, but rather as a tool to facilitate the use of this technology also by users with no programming skills.
+
+Moreover, as some parts of the system were designed knowing that they might need a full project focused only on them, this project leaves space for future improvements and integrations, such as the implementation of the remaining features and the exploitation of different technologies.
+
+\section{A Visual Language for Organizations}\label{visual-language}
+The main challenge in this project is surely the design of a visual language that, on one hand, is expressive enough to represent the organizational structure and the goals of an organization, and, on the other hand, is easy to use and understand by non-technical users.
+
+Since the visual abstractions are the main artifact of the system, the design of the language was the first step of the project and has gone through several iterations, possibly even evolving further in the future thanks to feedback from real users.
+
+\subsection{The Visual Paradigm}
+The choice of the most suitable visual paradigm was the first step of the design process since it is crucial to define the overall look and feel of the language.
+Indeed, it is of fundamental importance to choose a paradigm that is easy to use, allows the users to easily understand the meaning of the visual abstractions, is coherent with the concepts to represent, and can be easily translated into the actual specification.
+
+Comparing the existing paradigms for visual programming, the most natural choice was the diagram-based paradigm.
+Other approaches, even though already proven to be effective in many fields, were not perfectly suitable for this purpose.
+For instance, flow-based programming better fits the modeling of the way data must flow during the execution of the program, while block-based programming is more suitable to describe instructions to be executed in an imperative programming style.
+
+On the other hand, the diagram-based paradigm is appropriate to specify the characteristics of a system in a declarative programming fashion, therefore being highly convenient for the definition of an organizational specification.
+
+\subsection{Reference Language}
+To facilitate the design of the visual language, it was necessary to study and understand the organization specification language in order to identify the ``building blocks'' that could be used to represent the organizational structure and the goals of an organization.
+Since, as already mentioned, the system has \moise{} as a strong constraint and reference, as the organization specifications created should be compliant with it, the \moise{} language was chosen as a reference.
+
+The analysis of the concepts and the syntax of the reference language, to be ported as visual elements, first involved looking at the \moise{} XML metamodel that defines the rules for the organization specification syntax.
+A few examples of the main constructs are shown in \cref{lst:xml-metamodel}\footnote{The entire metamodel can be found at \url{https://github.com/moise-lang/moise/blob/master/src/main/resources/xml/os.xsd}}.
+
+As can be observed, a role definition requires the specification of an attribute \texttt{id}, that is the name of the role, and it may specify some roles it extends from through \texttt{extends} children elements.
+On the other hand, a goal definition requires the specification of the attributes \texttt{id}, that is the name of the goal, \texttt{ds}, that is the description, etc. and it may specify arguments, dependencies from other goals, and plans, with \texttt{argument}, \texttt{depends-on}, and \texttt{plan} children elements, respectively.
+
+The actual syntax used in the XML organization specification for roles and goals definition can be found in \cref{lst:xml-model}.
+
+\begin{figure}[H]
+    \lstinputlisting[language=XML,label={lst:xml-metamodel},caption={\moise{} syntax rules for the XML specification of roles and goals.}]{code/moise-metamodel.xsd}
+\end{figure}
+
+\begin{figure}[H]
+    \lstinputlisting[language=XML,label={lst:xml-model},caption={\moise{} actual sintax for the XML specification of roles and goals.}]{code/moise-model.xml}
+\end{figure}
+
 \subsection{Organization Structure}
 \subsection{Collective Goals}
 \subsection{Goals Allocation}
