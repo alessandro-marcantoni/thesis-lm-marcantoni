@@ -37,19 +37,162 @@ A few examples of the main constructs are shown in \cref{lst:xml-metamodel}\foot
 As can be observed, a role definition requires the specification of an attribute \texttt{id}, that is the name of the role, and it may specify some roles it extends from through \texttt{extends} children elements.
 On the other hand, a goal definition requires the specification of the attributes \texttt{id}, that is the name of the goal, \texttt{ds}, that is the description, etc. and it may specify arguments, dependencies from other goals, and plans, with \texttt{argument}, \texttt{depends-on}, and \texttt{plan} children elements, respectively.
 
-The actual syntax used in the XML organization specification for roles and goals definition can be found in \cref{lst:xml-model}.
-
 \begin{figure}[H]
     \lstinputlisting[language=XML,label={lst:xml-metamodel},caption={\moise{} syntax rules for the XML specification of roles and goals.}]{code/moise-metamodel.xsd}
 \end{figure}
+
+The actual syntax used in the XML organization specification for roles and goals definition can be found in \cref{lst:xml-model}.
+As can be observed, there are two roles defined, \texttt{role1} and \texttt{role2}, with the latter extending from the former.
+As far as the goals are concerned, there are four of them in total; the goal \texttt{goal2} has a description, the argument \texttt{arg1}, depends on the goal \texttt{goal1} and has a plan that consists of the sequence of the two goals \texttt{goal3} and \texttt{goal4}, that is $g2 = g3,g4$.
 
 \begin{figure}[H]
     \lstinputlisting[language=XML,label={lst:xml-model},caption={\moise{} actual sintax for the XML specification of roles and goals.}]{code/moise-model.xml}
 \end{figure}
 
-\subsection{Organization Structure}
-\subsection{Collective Goals}
-\subsection{Goals Allocation}
+Moreover, since a graphical representation of some of the \moise{} constructs is already available, it was possible to use them as a reference and starting point for the design of the visual language.
+
+\begin{figure}[H]
+    \begin{subfigure}[h]{0.4\linewidth}
+        \includegraphics[width=\textwidth]{images/moise-structural.png}
+        \caption{Structural specification}
+        \label{fig:moise-structural}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.6\linewidth}
+        \includegraphics[width=\textwidth]{images/moise-functional.png}
+        \caption{Functional specification}
+        \label{fig:moise-functional}
+    \end{subfigure}
+    \caption{Visual representation of the structural and functional specification in \moise{}. Adopted from~\cite{hubner2010}.}
+    \label{fig:moise-visual}
+\end{figure}
+
+The scenario described in \cref{fig:moise-visual} considers agents that aim at writing a paper and therefore have to collaborate.
+
+As shown in \cref{fig:moise-structural}, the structure of the organization has only one group, that is the \texttt{wpgroup} represented by a folder, with two roles defined, \texttt{writer} and \texttt{editor} represented by rounded rectangles, that extend, and therefore inherit the properties of, the \texttt{author} role.
+The relations and links among roles and groups are represented by arrows, with the pattern of the line and the different harrow heads indicating the type of relation.
+Indeed, a solid line with an empty diamond head indicates that the role is a member of a group, i.e. \texttt{writer} and \texttt{editor} are members of the \texttt{wpgroup} group.
+On the other hand, a solid line with an empty harrow head indicates that the source role extends the target role, i.e. \texttt{writer} and \texttt{editor} extend the \texttt{author} role.
+Moreover, a dashed line with a round head indicates that the source role can communicate with the target role, i.e. \texttt{author} can communicate with \texttt{author}, which in this scenario means that every agent can communicate with every other agent.
+Finally, a dashed line with a filled harrow head indicates that the source has authority on the target, i.e. \texttt{editor} has authority on \texttt{writer}.
+
+As far as the functional specification shown in \cref{fig:moise-functional} is concerned, the goals of the organization are represented in a tree-like structure, thus following the goal decomposition tree abstraction, with the root goal being the \texttt{write a paper} goal.
+The latter is decomposed into two subgoals, \texttt{fdv} (first draft version) and \texttt{sv} (submission version), through a sequence plan.
+What is more, the \texttt{fdv} and \texttt{sv} goals are decomposed through sequence plans into three subgoals each, that are \texttt{wtitle}, \texttt{wabs}, and \texttt{wsectitles} and \texttt{wsec}, \texttt{wcon}, and \texttt{wref}, respectively.
+Therefore, the plans can be formalized as:
+\begin{gather}
+    \text{\texttt{write a paper}} = \text{\texttt{fdv}}, \text{\texttt{sv}} \nonumber\\
+    \text{\texttt{fdv}} = \text{\texttt{wtitle}}, \text{\texttt{wabs}}, \text{\texttt{wsectitles}} \nonumber\\
+    \text{\texttt{sv}} = \text{\texttt{wsec}}, \text{\texttt{wcon}}, \text{\texttt{wref}} \nonumber
+\end{gather}
+
+\section{Visual Language Design}
+Once the main concepts were extrapolated both from a syntactical and semantic point of view and their visual representation was analyzed, the design process of the visual language started.
+
+One of the first crucial decisions was to keep the structure and the behavior of the organization separate, as it is done in \moise{}.
+This choice was made because it allows the user to focus on one aspect at a time, thus making them feel not overwhelmed by the complexity of the tool.
+Moreover, it allows re-using some visual building blocks in both the structural and the functional specification with a different meaning, thus reducing the number of elements that the user has to learn.
+
+Thereafter, the main components of the core concepts of the visual language were defined.
+As already mentioned, their design followed an iterative design process that made them more and more refined thanks to the feedback from the user tests.
+
+\subsection{Structure of the Organization}
+In this section, the visual representation of the main concepts regarding the structure of the organization are described.
+As already mentioned, the structure and the behavior of the organization are modeled separately using two different diagrams, therefore the following visual elements will be used in the structural specification diagram.
+
+\subsubsection{Roles}
+The roles of the organization are represented by circles, with the name of the role written above them.
+As can be seen in \cref{fig:roles}, the concrete roles are represented by a solid circle, while the abstract roles are represented by an empty circle.
+
+\begin{figure}[H]
+    \begin{subfigure}[h]{0.5\linewidth}
+        \begin{center}
+            \includegraphics[width=0.5\textwidth]{images/visual-language/concrete-role.png}
+            \caption{Representation of a concrete role.}
+            \label{fig:concrete-role}
+        \end{center}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.5\linewidth}
+        \begin{center}
+            \includegraphics[width=0.5\textwidth]{images/visual-language/abstract-role.png}
+            \caption{Representation of an abstract role.}
+            \label{fig:abstract-role}
+        \end{center}
+    \end{subfigure}
+    \caption{Roles representation in the visual language.}
+    \label{fig:roles}
+\end{figure}
+
+The introduction of the abstract roles was made to allow the user to define a role that is not directly played by an agent or part of a group, but that can be extended by other roles.
+This is useful and powerful when the user wants to define some common properties that are shared by more roles, thus avoiding the repetition of the same properties in the different roles.
+For instance, such roles could be assigned goals, links, constraints, etc. that are then inherited by the roles that extend them, in a similar way to the abstract classes inheritance in object-oriented programming.
+Moreover, the visual diversification between concrete and abstract roles emphasizes the difference between the two concepts, thus making the language more intuitive and suggesting the user this feature.
+
+\subsubsection{Groups}
+The groups of the organization are represented by rounded rectangles, with the name of the group written above them as shown in \cref{fig:group}.
+This container-like shape was chosen to suggest to the user that elements such as roles and other groups can be placed inside it.
+Therefore, the visual semantics of an element placed inside a group is that of membership, i.e. the element is a member of the group.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/visual-language/group.png}
+    \caption{Representation of a group.}
+    \label{fig:group}
+\end{figure}
+
+The elements that can be placed inside a group, and therefore be part of it, are the roles and other groups.
+
+The choice to allow groups to be members of other groups was made to allow the user to define a hierarchy of groups, thus allowing them to define a more complex structure of the organization.
+This is particularly powerful when a group is composed of multiple instances with the same structure, as it allows the user to define the subgroup structure only once, using it as a template to check the well-formedness of the instances.
+
+As far as the roles are concerned, only the concrete roles can be members of a group, since, as already mentioned, the abstract roles are not directly played by an agent and therefore not part of a group.
+
+In \cref{fig:groups} it is possible to see an example of a simple structure that exploits group hierarchies and the role membership concept.
+In particular, the group \texttt{g1} is composed of the role \texttt{r1} and the group \texttt{g2}, which is composed of the role \texttt{r2}.
+This shows how exploiting only two visual elements, i.e. the groups and the roles, it is possible to define rather complex structures.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/visual-language/groups.png}
+    \caption{Example of a structure that exploits group hierarchies and the role membership concept.}
+    \label{fig:groups}
+\end{figure}
+
+\subsubsection{Relations}
+The relations between the roles of the organization are represented by arrows, with the style of the arrow giving information about the type of relation.
+Only a subset of the relations defined in \moise{} is currently represented and supported by the visual language since the others are either not used in practice or there is no way to enforce them in the current version of the JaCaMo framework.
+Therefore, the core relations were identified and chosen, giving space to future work to extend the visual language to support the remaining relations.
+
+\begin{figure}[H]
+    \begin{subfigure}[h]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/visual-language/extension.png}
+        \caption{Extension relation among roles.}
+        \label{fig:extension}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/visual-language/compatibility.png}
+        \caption{Compatibility relation among roles.}
+        \label{fig:compatibility}
+    \end{subfigure}
+    \caption{Visual representation of the implemented relations.}
+    \label{fig:relations}
+\end{figure}
+
+As shown in \cref{fig:relations}, the subset of relations that are currently supported by the visual language are the extension and the compatibility relations.
+
+The extension relation, visible in \cref{fig:extension}, is represented by an arrow with a dashed line, an empty harrow head, a slightly dimmed color, and the \texttt{extends} label on it.
+In particular, the source role, i.e. \texttt{r1}, extends the target role, i.e. \texttt{r2}, meaning that the source role is a specialization of the target role.
+
+On the other hand, the compatibility relation, depicted in \cref{fig:compatibility}, is represented by an arrow with a solid line, a filled diamond on the target end, a dark color, and the \texttt{compatibility} label on it.
+In this scenario, the source role, i.e. \texttt{r1}, is compatible with the target role, i.e. \texttt{r2}, meaning that the target role can be played by an agent that is already playing the source role.
+
+\subsection{Behavior of the Organization}
+
+
+% \subsection{Organization Structure}
+% \subsection{Collective Goals}
+% \subsection{Goals Allocation}
 
 \section{Main Components}
 \subsection{Web-Based IDE}
