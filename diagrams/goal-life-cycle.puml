@@ -1,0 +1,17 @@
+@startuml
+
+left to right direction
+hide empty description
+
+state Waiting
+state Impossible
+state Enabled
+state Achieved
+
+[*] --> Waiting
+Waiting --> Impossible : [goal is not possible]
+Waiting --> Enabled : [goal preconditions are satisfied]
+Enabled --> Achieved : [goal is achieved]
+Enabled --> Impossible : [goal is not possible]
+
+@enduml
