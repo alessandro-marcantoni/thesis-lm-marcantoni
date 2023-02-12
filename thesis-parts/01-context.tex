@@ -86,19 +86,44 @@ This kind of user can be defined as professionals in some domain different from 
 Given the latter definition and the premise suggesting the importance of domain expertise, providing domain experts with tools, such as domain-specific languages (DSL) or more user-friendly visual tools, that allow them to ``code'' or configure parts of complex systems feels very natural.
 Therefore the need for an intuitive development environment in which users with no proper computer science background can naturally and seamlessly transform their domain knowledge into specifications with low-code (or possibly no-code).
 
-\section{Proposing a Visual Programming Paradigm for Organizations}
+\section{Visual Programming Paradigm}
 Multi-Agent Systems is one of the core enabling technologies of the infrastructure of \textit{IntellIoT}.
 MAS fit IoT because they tackle the complexity and handle the decentralization of the IoT ecosystem by providing a framework for coordinating the actions of a large number of devices, allowing the latter to communicate and make decisions toward the achievement of a common goal.
 Another critical advantage of MAS is their ability to deal with partial knowledge, incomplete and imperfect information, and adapt and reason in real-time, which is crucial in dynamic, uncertain, open, and distributed networks.
 
 However, the high-level expertise required to program agent-based systems hinders the large-scale adoption of MAS.
-Thus, efforts have been made to eliminate the entry barrier to MAS development, such as creating an agent-oriented programming paradigm \cite{burattini2022agent}, which enables individuals without coding experience, but with knowledge of specific target domains, to design and (re)configure autonomous software.
 
-Nevertheless, although this block-based visual development environment is suitable for defining single entities, a level of abstraction to handle the relations among and coordination of the latter is still missing.
+\subsection{Agent-Oriented Visual Programming}
+To facilitate the spread of this technology, efforts have been made to eliminate the entry barrier to MAS development.
+One example of such endeavor is the development of an agent-oriented programming paradigm \cite{burattini2022agent}, which enables individuals without coding experience, but with knowledge of specific target domains, to design and (re)configure autonomous software.
+
+This proposal makes the development of software agents easier in two ways:
+\begin{itemize}
+    \item \textbf{Use of human-oriented abstractions}: the application of the BDI (Belief-Desire-Intention) model, which makes use of concepts such as goals, plans, beliefs, and intentions, allows defining the agent's behavior more naturally, as this paradigm matches more closely people's everyday experience.
+    \item \textbf{Use of visual programming techniques}: this project makes use of block-based programming, which is a visual programming paradigm that uses blocks to represent the program's instructions.
+    The adoption of a no-code environment allows non-technical users to easily create and modify agents.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/blocks-example.png}
+    \caption{Example of a ``ping'' agent implemented with the block language. Adopted from~\cite{burattini2022agent}.}
+    \label{fig:blocks-example}
+\end{figure}
+
+An example of this work can be found in \cref{fig:blocks-example}, which shows a simple ``ping'' agent.
+When started, the agent has a belief that the \texttt{wait\_time} is $2$ seconds, and it has to achieve the goal \texttt{ping}.
+In addition, the agent is given instructions on how to achieve the goal through a plan.
+The latter states that when the agent decides to achieve the goal \texttt{ping} and knows what the \texttt{wait\_time} is, it should first wait for the time specified in its belief, then send a message to the agent \texttt{pong}.
+
+\subsection{Proposing a Visual Programming Paradigm for Organizations}
+Although the above block-based visual development environment is suitable for defining single entities, a level of abstraction to handle the relations among and coordination of the latter is still missing.
+
+When dealing with multiple agents in a MAS, the complexity of the system increases dramatically and the coordination of and interaction among the agents' becomes more and more challenging.
 Even though these aspects could be technically represented and managed directly in the mind of the agents, the adoption of adequate abstractions makes the solution dramatically more straightforward and elegant. \cite{boissier2020multi}
 
 Therefore, the idea is to design and implement a visual language and a supportive development environment for MAS organizations, which is a novelty to our knowledge.
-The core thesis work will be based on studying the existing organization models, with particular attention to the $\mathcal{M}\text{\footnotesize{OISE}}^{+}$ model, and developing an appropriate representation that could provide a suitable tradeoff between the expressiveness of code-based specifications and the ease of use of graphic programming interfaces.
+The core thesis work will be based on studying the existing organization models, with particular attention to the \moiseplus{} model, and developing an appropriate representation that could provide a suitable tradeoff between the expressiveness of code-based specifications and the ease of use of graphic programming interfaces.
 A qualitative evaluation is also planned to receive feedback for the developed framework and to study how non-technical users solve problems by exploiting the visual language.
 
 The following chapter provides an introduction to the background of the main technologies and research topics explored in the project.
