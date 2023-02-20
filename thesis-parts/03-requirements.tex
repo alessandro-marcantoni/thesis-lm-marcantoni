@@ -65,7 +65,7 @@ Each non-leaf goal is decomposed into subgoals by \textit{plans} using three ope
 \begin{itemize}
     \item \textit{sequence}: the plan $g1 = g2, g3$ means that the goal $g1$ is satisfied if and only if $g2$ and subsequently $g3$ are satisfied;
     \item \textit{choice}: the plan $g1 = g2 | g3$ means that the goal $g1$ is satisfied if one and only one of $g2$ or $g3$ is satisfied;
-    \item \textit{parallel}: the plan $g1 = g2 || g3$ means that the goal $g1$ is satisfied if both $g2$ and $g3$ are satisfied, and they can be pursued in parallel.
+    \item \textit{parallel}: the plan $g1 = g2 \parallel g3$ means that the goal $g1$ is satisfied if both $g2$ and $g3$ are satisfied, and they can be pursued in parallel.
 \end{itemize}
 Therefore, a social plan denotes a structure of interrelated organizational goals to be satisfied by multiple agents that have to coordinate to handle dependencies between goals.
 
