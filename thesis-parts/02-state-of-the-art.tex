@@ -1,4 +1,4 @@
-\chapter{Background}
+\chapter{Background}\label{background}
 To better understand this thesis work, a brief excursus of the existing literature about the main concepts the project relies on is presented. The aim is to provide some basic knowledge of the topics to understand what is considered state-of-the-art and to introduce some of the technologies exploited to develop the project.
 
 \section{Multi-Agent Systems}
@@ -10,14 +10,18 @@ In this section, a brief overview of the main concepts and characteristics of MA
 \subsection{What is an Agent?}
 The concept of a software agent can be traced back to the early days of research into Distributed AI in the 1970s when Carl Hewitt proposed the concurrent Actor model.
 In his paper, he introduced the concept of a self-contained, interactive, and concurrently-executing object which he termed ``actor''.
-The latter is a computational agent with a mail address and behavior. Actors can communicate by message-passing and carry out their actions concurrently.~\cite{hewitt1977viewing}
+The latter is a computational \textit{agent} with a mail address and behavior.
+Actors can communicate by message-passing and carry out their actions concurrently.~\cite{hewitt1977viewing}
+
+Software agents strongly rely on many of the concepts introduced by the Actor model, such as the idea of a self-contained entity endowed with its control flow that can interact with other entities and the use of message-passing for communication.
+On top of that, agents bring in autonomous and proactive behavior as researchers were interested in the development of systems made up of entities with human-like skills such as reasoning, problem-solving, and decision-making.
 
 The term ``agent'' quickly spread to heterogeneous research fields; therefore, there is no commonly agreed definition for it.
 However, a generally accepted description of what an agent is is the following by Wooldridge~\cite{490039}:
 \begin{quote}
     \textit{An agent is a self-contained program capable of controlling its own decision-making and acting, based on its perception of its environment, in pursuit of one or more objectives.}
 \end{quote}
-To sum up, a set of features that an agent should possess can be identified:
+To sum up, a set of features that an agent should possess can be identified~\cite{490039}:
 \begin{itemize}
     \item \textbf{Autonomy}: agents should be able to perform most of their tasks without the direct intervention of humans or other agents, and they should encapsulate control over their actions and internal state
     \item \textbf{Social ability}: agents should be able to interact with each other and possibly humans to complete their tasks.
@@ -25,11 +29,11 @@ To sum up, a set of features that an agent should possess can be identified:
     \item \textbf{Proactiveness}: agents should exhibit opportunistic, goal-directed behavior and take the initiative when appropriate.
 \end{itemize}
 
-During the first years, the research concentrated on interaction and communication among agents, decomposition and distribution of tasks, and coordination and cooperation.
+Since the first years, the research concentrated on interaction and communication among agents, decomposition and distribution of tasks, and coordination and cooperation.
 The goal was to specify, analyze, design, and integrate systems containing multiple collaborative agents.
 
 \subsection{From the Individual to the Collective}
-Multi-Agent Systems have been studied as a per se field since the 1980s and gained widespread recognition in the 1990s.
+Multi-Agent Systems (MAS) have been studied as a per se field since the 1980s and gained widespread recognition in the 1990s.
 Since then, international interest in the topic has grown enormously as agents are considered an appropriate paradigm to exploit the possibilities presented by massive open distributed systems.
 Moreover, MAS seem to be a natural metaphor for understanding and building a wide range of what might be called \textit{artificial social systems}.~\cite{wooldridge2009introduction}
 
@@ -109,7 +113,7 @@ Here is provided a brief overview of the most common paradigms~\cite{horling_les
     \item \textbf{Teams}: they consist of several cooperative agents that agreed to work together towards a common goal.
     Unlike coalitions, teams attempt to maximize the performance of the group as a whole, rather than the performance of individual agents.
     This is usually achieved by assigning roles to the agents, which become responsible for specific tasks, and by providing the agents with representations of the shared goals, knowledge, and plans.
-    \item \textbf{Congregations}: although similar to the latter two structures, they differentiate because are assumed to be long-lived and are not necessarily formed with a specific goal in mind.
+    \item \textbf{Congregations}: although similar to the latter two structures, they differentiate because they are assumed to be long-lived and are not necessarily formed with a specific goal in mind.
     Indeed, congregations are formed among agents with similar o complementary characteristics to facilitate the process of finding partners for collaborations.
     \item \textbf{Societies}: they are open systems where agents of different kinds may come and go at will while the society persists, acting as an environment through which the participants meet and interact.
     Societies impose on agents a set of constraints which are known as \textit{social laws}, \textit{norms}, or \textit{conventions}.
@@ -171,28 +175,30 @@ Here is provided a brief overview of the most common paradigms~\cite{horling_les
     \label{fig:organizational-paradigms}
 \end{figure}
 
-All of the above structures come with their benefits and drawbacks, which are briefly summarized in~\cref{table:orgs-advantages-disadvantages} and it is generally agreed that there is no single type of organization that is suitable for all situations.
+All of the above structures come with their benefits and drawbacks
+%, which are briefly summarized in~\cref{table:orgs-advantages-disadvantages}
+and it is generally agreed that there is no single type of organization that is suitable for all situations.
 Indeed, sometimes two or more organizational paradigms may be combined to form a compound organization, exploiting features of each of the component organizations.
 
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{ | l p{0.4\linewidth} p{0.4\linewidth} | }
-        \hline
-        \textbf{Paradigm} & \textbf{Benefits} & \textbf{Drawbacks} \\\hline\hline
-        Hierarchy & Maps to many common domains; handles scale well & Potentially brittle; can lead to bottlenecks \\\hline
-        Holarchy & Exploit autonomy of functional units & Must organize holons, lack of predictable performance. \\\hline
-        Coalition & Exploit strength in number & Individual goals are preferred to common goals \\\hline
-        Team & Address larger problems; task-centric & Increased communication \\\hline
-        Congregation & Facilitates agents discovery & Sets may be overly restrictive \\\hline
-        Society & Public services; well-defined conventions & Potentially complex; agents may require society-related capabilities \\\hline
-        Federation & Matchmaking, brokering, and translation services facilitate dynamic agent pool & Intermediaries become bottlenecks \\\hline
-        Market & Good at allocation, increased utility through centralization, increased fairness through bidding & Potential for malicious behavior; decisions complexity can be high \\\hline
-        Matrix & Resource sharing; multiple influenced agents & Potential conflicts \\\hline
-    \end{tabular}
-\caption{Benefits and drawbacks of the organizational paradigms, adopted from~\cite{Ahmed_Abbas_2015}.}
-\label{table:orgs-advantages-disadvantages}
-\end{table}
+% \begin{table}[h]
+%     \centering
+%     \begin{tabular}{ | l p{0.4\linewidth} p{0.4\linewidth} | }
+%         \hline
+%         \textbf{Paradigm} & \textbf{Benefits} & \textbf{Drawbacks} \\\hline\hline
+%         Hierarchy & Maps to many common domains; handles scale well & Potentially brittle; can lead to bottlenecks \\\hline
+%         Holarchy & Exploit autonomy of functional units & Must organize holons, lack of predictable performance. \\\hline
+%         Coalition & Exploit strength in number & Individual goals are preferred to common goals \\\hline
+%         Team & Address larger problems; task-centric & Increased communication \\\hline
+%         Congregation & Facilitates agents discovery & Sets may be overly restrictive \\\hline
+%         Society & Public services; well-defined conventions & Potentially complex; agents may require society-related capabilities \\\hline
+%         Federation & Matchmaking, brokering, and translation services facilitate dynamic agent pool & Intermediaries become bottlenecks \\\hline
+%         Market & Good at allocation, increased utility through centralization, increased fairness through bidding & Potential for malicious behavior; decisions complexity can be high \\\hline
+%         Matrix & Resource sharing; multiple influenced agents & Potential conflicts \\\hline
+%     \end{tabular}
+% \caption{Benefits and drawbacks of the organizational paradigms, adopted from~\cite{Ahmed_Abbas_2015}.}
+% \label{table:orgs-advantages-disadvantages}
+% \end{table}
 
 \subsection{The JaCaMo Platform}
 Regarding the engineering and implementation of MAS, one of the reference technologies is the JaCaMo platform~\cite{Boissier2016}, which supports practical programming based on the first-class abstractions introduced before to develop organized agents situated in a shared environment.
@@ -221,7 +227,7 @@ The decomposition of global goals results in a goal tree, called \textit{scheme}
 
 Finally, the deontic dimension serves as a binding between the structural and functional dimensions, specifying the roles' \textit{permissions} and \textit{obligations} for missions.
 
-The infrastructure adopted by the \moiseplus{} model is called \oraformas{} (Organizational Artifacts for Multi-Agent Systems)~\cite{hubner2010} which conceives \textit{organizational agents} that control, manage and adapt the organization operating on \textit{organizational artifacts}, thus adhering to the \textit{A\&A} metamodel, such as \textsf{OrgBoard}, \textsf{GroupBoard}, \textsf{SchemeBoard}, and \textsf{NormativeBoard}.
+The infrastructure adopted by JaCaMo for the \moiseplus{} model is called \oraformas{} (Organizational Artifacts for Multi-Agent Systems)~\cite{hubner2010} which conceives \textit{organizational agents} that control, manage and adapt the organization operating on \textit{organizational artifacts}, thus adhering to the \textit{A\&A} metamodel, such as \textsf{OrgBoard}, \textsf{GroupBoard}, \textsf{SchemeBoard}, and \textsf{NormativeBoard}.
 
 The next section illustrates how the above artifacts can be used in the deployment of an organization.
 
@@ -260,7 +266,7 @@ To achieve a uniform interface between components, interaction in REST is driven
 
 According to HATEOAS, a typical Web application, which is composed of multiple hyperlinked Web pages, can be seen as a finite state machine where each page represents a state and hyperlinks between pages represent transitions between states.
 Indeed, given the URI of one of the pages, a client can dereference the URI to retrieve an HTML representation of that page.
-This action triggers a transition to a new application state and the client can now choose from a new set of Web pages; both the next reachable states and the knowledge required to transition to those states are conveyed to the client through hypermedia.
+This action triggers a transition to a new application state which provides the client with a new set of reachable states in the form of hyperlinks to other Web pages; both the next reachable states and the knowledge required to transition to those states are conveyed to the client through hypermedia.
 Therefore, a client should be able to discover new resources and how to use them at runtime, allowing components to be deployed independently from one another.
 
 \subsection{Web-based Multi-Agent Systems}
@@ -268,7 +274,7 @@ There has been extensive research on using the Web as an infrastructure for dist
 The early approaches usually fall into one of the following two categories:
 \begin{itemize}
     \item \textbf{The Web as a Transport Layer}: these systems use HTTP as a transport layer for the communication between agents; thus, they make limited use of the architectural properties of the Web.
-    \item \textbf{The Web as an Application Layer}: agent services are translated into Web services, which expose REST-like interfaces.
+    \item \textbf{The Web as a non Hypermedia Application Layer}: agent services are translated into Web services, which expose REST-like interfaces.
     However, these systems do not support hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
 \end{itemize}
 
@@ -297,11 +303,11 @@ The affordances of a \textit{thing} are intended in the hypermedia perspective o
     \label{fig:hypermedia-mas}
 \end{figure}
 
-The missing gap between MAS and the Web is filled by the integration between the environment in MAS and the Web architecture~\cite{ciortea2019}.
-Hypermedia MAS are systems composed of both people and autonomous agents situated in a shared \textit{hypermedia environment} that is distributed across the Web, that thus becomes an \textit{hypermedia application}~\cite{ciortea2018}.
-According to this approach, all the entities, both agents and artifacts, are represented as Web resources possibly interrelated by hyperlinks.
+Integrating the environment in multi-agent systems with the Web architecture helps bridge the gap that previously existed between MAS and the Web~\cite{ciortea2019}.
+Hypermedia MAS are systems composed of both people and autonomous agents situated in a shared \textit{hypermedia environment} that is distributed across the Web and thus becomes an \textit{hypermedia application}~\cite{ciortea2018}.
+According to this approach, all the entities, both agents and artifacts, are Web resources and their representations can be related by hyperlinks.
 
-In contrast to typical endogenous environments, a hypermedia environment uses hypermedia to drive interaction in the MAS: agents navigate and crawl the environment at runtime to discover other entities in the MAS, as well as the means to interact with them, in an analogous approach to the one used in the Web of Things with the Thing Description.
+In contrast to typical environments, a hypermedia environment uses hypermedia to drive interaction in the MAS: agents navigate and crawl the environment at runtime to discover other entities in the MAS, as well as the means to interact with them, in an analogous approach to the one used in the Web of Things through the Thing Description.
 This reduces coupling and enhances the scalability and evolvability of the systems.
 
 The three key design principles meant to ensure the proper use of hypermedia as a general mechanism for uniform interaction in MAS are the following~\cite{10.1007/978-3-030-25693-7_15}:
@@ -320,3 +326,6 @@ The three key design principles meant to ensure the proper use of hypermedia as 
 \end{enumerate}
 
 Engineers can choose to ignore one or more of these principles, but the MAS would most likely make limited use of the hypermedia and would not achieve uniform interaction, hindering the scalability and openness of the system.
+
+% visual programming
+% agent-oriented visual programming

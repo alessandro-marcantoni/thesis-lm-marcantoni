@@ -3,7 +3,7 @@ This project was born thanks to the collaboration between the \textit{Pervasive 
 
 Since both groups are interested and involved in similar research topics, such as the interactions among devices and people in ubiquitous computing environments, a highly enriching opportunity for an internship abroad arose.
 
-Moreover, the research group in St.\ Gallen is contributing to a European project named \textit{IntellIoT}\footnote{\href{https://intelliot.eu/}{https://intelliot.eu/}}, which stands for ``Intelligent IoT'' and whose aim is, together with its partners, to develop a reference architecture to enable IoT environments for semi-autonomous IoT applications endowed with intelligence that evolves with the Human-in-the-Loop.
+Moreover, the research group in St.\ Gallen is contributing to a European project named \textit{IntellIoT}\footnote{\href{https://intelliot.eu/}{https://intelliot.eu/}}, which stands for ``Intelligent IoT'' and whose aim is, together with its partners, to develop a reference architecture to enable IoT solutions for applications where autonomy, intelligence, and the Human-in-the-Loop strategy are key requirements.
 Hence, the concurring perspective of the two research groups and the St.\ Gallen group's participation in such a visionary initiative made it easy to shape the requirements of the thesis work.
 
 The following sections will present the main objectives of the \textit{IntellIoT} project to describe the context in which the thesis was conducted.
@@ -15,10 +15,10 @@ The following sections will present the main objectives of the \textit{IntellIoT
 \textit{IntellIoT} is a Pan-European project that focuses on developing integrated, distributed, human-centered and trustworthy IoT frameworks, with particular attention to sectors like agriculture, healthcare, manufacturing, energy, construction, and smart cities.
 
 To achieve the latter goals, \textit{IntellIoT} explores and exploits new enabling technologies such as 5G connectivity, distributed technology, Augmented Reality, Artificial Intelligence, and tactile internet.
-Of course, this is possible thanks to the project's partners spread across ten countries that form a competitive ecosystem.
+Of course, this is possible thanks to the project's partners which are spread across ten countries and form a competitive ecosystem.
 
 Among them, the \textit{University of St.\ Gallen} is currently focusing on integrating physical things into the Web, increasing the autonomy of Web-enabled devices, and making interactions of connected devices intelligible for people using \textbf{Hypermedia Multi-Agent Systems}.
-Indeed, the primary objective of this thesis is to explore how humans can effectively define such systems' organization.
+Indeed, the primary objective of this thesis is to explore how humans can effectively define the organization of the software agents that control such systems.
 
 \subsection{Mission}
 Smart technologies play a significant role in our life and work.
@@ -28,13 +28,17 @@ Therefore, the goal of \textit{IntellIoT} is to tackle these issues and create a
 \subsubsection{Collaborative IoT}
 Various semi-autonomous entities should cooperate to achieve the system's overall goal.
 Hence, self-awareness and knowledge of the task to perform and the environment where they are located are vital abilities to seek.
-Entities can acquire knowledge either by interacting with the environment via sensors or by reliable and secure communication with each other.
-However, since providing complete knowledge to entities in open and continuously changing environments is practically infeasible, Artificial Intelligence and Machine Learning come to the rescue.
+Entities can acquire knowledge either by interacting with the environment via sensors or by communicating with each other.
+However, since providing complete knowledge to entities in open and continuously changing environments is practically infeasible, Artificial Intelligence and Machine Learning algorithms are exploited.
 
 \subsubsection{Human-in-the-Loop}
-Since IoT applications cannot be completely autonomous in how they decide and act, humans need to be involved in controlling and optimizing the Artificial Intelligence the devices are endowed with.
+Since IoT applications cannot be completely autonomous in how they decide and act, humans need to be involved in controlling and optimizing the Machine Learning Systems the devices are endowed with.
 Indeed, the interaction between humans and intelligent systems can expand the latter's knowledge about the environment or the application by exploiting the former's experience.
 In fact, by applying Machine Learning algorithms, the devices can learn new features and information about the overall process so that they will have enough knowledge to react to similar scenarios in the future automatically.
+
+Moreover, end users should be involved more in the design process of the system, as they are the ones who know the application domain best.
+Their contribution can be indeed crucial, moving from just defining the requirements of the application to the actual development and configuration.
+Therefore, a user-friendly and intuitive environment is needed to enable non-expert users to easily define the system's behavior.
 
 \subsubsection{Trustworthiness}
 As beneficial as IoT devices are, they present some major security concerns.
@@ -55,7 +59,8 @@ Moreover, for the pillars to not remain only abstract concepts, various use case
 
 \begin{itemize}
     \item \textbf{Agriculture}: the application of IoT in agriculture could be a life-changer for humanity as we now witness how extreme weather, deteriorating soil, dry lands, and collapsing ecosystems make food production more and more complicated and expensive, not to mention the population growth that increases the demand for resources.
-    Although ``smart farming'' is already a thing, \textit{IntellIoT} aims to bring it to the next level thanks to autonomous devices such as self-driving tractors and drones endowed with sensors and actuators.
+    
+    Although ``smart farming'' is already quite popular, \textit{IntellIoT} aims to bring it to the next level thanks to autonomous devices such as self-driving tractors and drones endowed with sensors and actuators.
     However, even though machines perform potentially dangerous, tiring, and repetitive tasks for humans, the latter still play a crucial role in managing the farm.
     Indeed, they can remote control the devices in uncertain situations, refining the Artificial Intelligence models.
     Additionally, human operators are in charge of defining the goals of the farming system, leveraging their experience and knowledge about the domain.
@@ -63,13 +68,15 @@ Moreover, for the pillars to not remain only abstract concepts, various use case
     Indeed, being endowed with specific sensors, devices can track the latter's vital signs and other health metrics and send the collected data to healthcare providers.
     Some examples of such devices are \textit{Continuous Glucose Monitoring} \cite{facchinetti2013real} and \textit{Dissolvable Brain Swelling}\cite{kang2016bioresorbable} sensors or ordinary smartwatches.
     This process improves the patient's quality of life, which does not need to be limited to their home or the hospital and can thus carry on with their regular everyday activities.
+
     Moreover, continuous monitoring and real-time data sharing allow timely interventions when necessary, and automatic data collection can drastically decrease the time and effort required to retrieve and manage information about the patient.
-    Not to mention the opportunities for data analysis and possible Artificial Intelligence models that would support clinicians in being more efficient.
+    Not to mention the opportunities for data analysis and possible Machine Learning models that would support clinicians in being more efficient.
     However, this workflow potentially exposes patients' sensitive information; therefore, we find privacy, security, and trust assurance among the main focuses of \textit{IntellIoT} regarding this use case.
-    \newline
     \item \textbf{Manufacturing}: IoT is one of the core driving forces behind Industry 4.0, which aims to digitalize and automate operational processes counting on as little support as possible from human operators, from the order submission to the delivery of the product.
     Leveraging AI and Machine Learning, robotics, and data analysis, IntellIoT envisions a future with shared manufacturing plants and multiple customers utilizing manufacturing as-a-service.
-    According to the latter scenario, an intelligent IoT environment would derive a production plan from data received from a customer and select the appropriate machines for the planned steps.
+
+    According to the latter scenario, an intelligent IoT environment would derive a production plan from data received from a customer.
+    Subsequently, the software agents that control the machines would organize according to their role, which is adopted taking into account the machine's capabilities, making it possible to complete the planned steps.
     However, whenever AI is not sufficiently confident about a step, a human-in-the-loop can take over control remotely, providing information that will be learned by the Machine Learning algorithm thanks to continual learning.
 \end{itemize}
 
@@ -123,7 +130,7 @@ When dealing with multiple agents in a MAS, the complexity of the system increas
 Even though these aspects could be technically represented and managed directly in the mind of the agents, the adoption of adequate abstractions makes the solution dramatically more straightforward and elegant. \cite{boissier2020multi}
 
 Therefore, the idea is to design and implement a visual language and a supportive development environment for MAS organizations, which is a novelty to our knowledge.
-The core thesis work will be based on studying the existing organization models, with particular attention to the \moiseplus{} model, and developing an appropriate representation that could provide a suitable tradeoff between the expressiveness of code-based specifications and the ease of use of graphic programming interfaces.
+The core thesis work will be based on studying the existing organization models, with particular attention to the \moiseplus{} model~\cite{10.1145/544741.544858}, and developing an appropriate representation that could provide a suitable tradeoff between the expressiveness of code-based specifications and the ease of use of graphic programming interfaces.
 A qualitative evaluation is also planned to receive feedback for the developed framework and to study how non-technical users solve problems by exploiting the visual language.
 
 The following chapter provides an introduction to the background of the main technologies and research topics explored in the project.
