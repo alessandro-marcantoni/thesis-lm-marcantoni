@@ -188,12 +188,152 @@ On the other hand, the compatibility relation, depicted in \cref{fig:compatibili
 In this scenario, the source role, i.e. \texttt{r1}, is compatible with the target role, i.e. \texttt{r2}, meaning that the target role can be played by an agent that is already playing the source role.
 
 \subsection{Behavior of the Organization}
+After describing the visual components of the organization structure, the next step is to present the visual abstractions that allow the user to define the behavior of the organization.
+The following elements will be used in the functional specification diagram, therefore separated from the one regarding the structure.
+
+\subsubsection{Goals}
+The goals of the organization are represented by rectangles with rounded corners, with the name of the goal written inside them as shown in \cref{fig:goal}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/visual-language/goal.png}
+    \caption{Representation of a goal.}
+    \label{fig:goal}
+\end{figure}
+
+Unlike the groups, the choice to place the label inside the rectangle was made to suggest to the user that the goal can be a complete element by itself.
+
+Even though according to the \moise{} model a goal can be composed of multiple subgoals, representing them inside the supergoal rectangle would make the diagram too complex and hard to read, not to talk about the scalability issues that would arise.
+Indeed, when defining complex scenarios, several levels of decomposition can be reached, and the multiple nesting of subgoals would make the diagram not understandable at first glance.
+
+To address this issue, the choice was made to also represent the subgoals of a goal as top-level elements.
+In this way, the user can still easily identify the subgoals of a goal, while the diagram stays readable and easy to understand.
+
+Therefore, the decision was to diverge from the \moise{} model and represent the goals not as a goal decomposition tree but as a \textit{dependency graph}, where the nodes are the goals and the edges are the dependencies between them.
+
+\subsubsection{Dependencies}
+The dependencies between the goals of the organization are represented by arrows that connect goals, with the style of the arrow giving information about the type of dependency, as shown in \cref{fig:dependencies}.
+
+\begin{figure}[H]
+    \begin{subfigure}[h]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/visual-language/dependency-and.png}
+        \caption{Dependency between goals with \texttt{AND} semantics.}
+        \label{fig:dependency-and}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/visual-language/dependency-or.png}
+        \caption{Dependency between goals with \texttt{OR} semantics.}
+        \label{fig:dependency-or}
+    \end{subfigure}
+    \caption{Visual representation of the dependencies among goals.}
+    \label{fig:dependencies}
+\end{figure}
+
+It is possible to define two types of dependencies between goals with different semantics.
+
+The first type of dependency is the \textit{AND} dependency, visible in \cref{fig:dependency-and}, which is represented by an arrow with a solid line and a harrow head on the target end.
+In this scenario, the target goal \texttt{g3} depends on the source goals \texttt{g1} and \texttt{g2}.
+The \texttt{AND} semantics means that the target goal can be achieved only if all the source goals are achieved, with similar behavior to the plan with \texttt{parallel} operator in \moise{}.
+
+$$g3 = g1 \wedge g2$$
+
+On the other hand, the second type of dependency is the \textit{OR} dependency, depicted in \cref{fig:dependency-or}, which is represented by an arrow with a dashed line and a harrow head on the target end. In this scenario, the target goal \texttt{g3} depends on the source goals \texttt{g1} and \texttt{g2}. The \texttt{OR} semantics means that the target goal can be achieved if at least one of the source goals is achieved, with similar behavior to the plan with \texttt{choice} operator in \moise{}.
+
+$$g3 = g1 \vee g2$$
+
+Finally, the \texttt{sequence} operator is achieved through the concept of dependency itself, since dependencies have a \textit{finish-to-start} relationship, meaning that the target goal can be achieved only after the source goals are achieved.
+
+The dependency graph closely resembles the concept of a \textit{Program Evaluation and Review Technique (PERT) diagram}~\cite{donald1972}, which is a statistical tool used in project management designed to analyze and represent the tasks involved in completing a given project.
+However, unlike the latter which is usually made up of a single connected component, the dependency graph here described explicitly allows the user to define multiple connected components to represent groups of goals that can be achieved independently.
+
+\subsubsection{Goals Allocation}
+Although goals allocation in \moise{} is handled through norms in a separate dimension from the structural and functional one, the visual language allows the user to define the allocation of goals to roles directly in the functional specification diagram.
+Indeed, having a third diagram to accomplish this task would make the process of defining the organization unnecessarily complex.
+Therefore, being the drawbacks in terms of customization negligible, the choice was made to exploit the functional specification diagram.
+
+This choice also abstracts from the concept of \textit{mission} that is no longer needed to define the allocation of goals to roles.
+While in \moise{} goals can be grouped to form missions, which are then assigned to roles, in the visual language the goals are directly assigned to roles without the need for an intermediate step.
+Again, the ease of use and the simplicity of the diagram were preferred over the possibility of customization, which is acceptable in most actual use cases.
+
+The role responsible for achieving a goal is represented by a circle with the initials of the role's name written inside it.
+To represent that a role is responsible for achieving a goal, its circle is placed inside the rectangle representing the goal, as shown in \cref{fig:goal-allocation}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/visual-language/goal-allocation.png}
+    \caption{Representation of a goal allocation.}
+    \label{fig:goal-allocation}
+\end{figure}
+
+The visual representation of the rectangle corresponding to the goal slightly changes when a role is responsible for achieving it.
+Indeed, the goal name is moved from inside the rectangle to the top of it to make room for the roles.
+
+There are two ways in which a goal can be assigned to a role and they come with different semantics, corresponding to the \textit{deontic modalities} of \moise{}'s normative dimension:
+\begin{itemize}
+    \item \textbf{Obligation}: the goal is assigned to the role with the \texttt{obligation} modality, meaning that the agent playing that role is obliged to achieve the goal.
+    \item \textbf{Permission}: the goal is assigned to the role with the \texttt{permission} modality, meaning that the agent playing that role is allowed to achieve the goal if it wants to.
+\end{itemize}
+
+As far as the cardinality of goal allocation is concerned, multiple scenarios are possible.
+A goal can be assigned to one, multiple, or no roles.
+
+When the goal is assigned to no roles, it means that no specific agent will actively achieve it, but the goal will be considered as achieved as soon as the goals it depends on are achieved.
+This is particularly useful when representing dummy goals that are used to represent the completion of a task.
+Indeed, they improve the readability and understandability of the diagram but do not affect the actual behavior of the organization.
+
+Moreover, the type of role that the goal is assigned to slightly changes the semantics.
+If the goal is assigned to a \textit{concrete} role, then the goal is assigned to that specific role.
+On the other hand, if the goal is assigned to an \textit{abstract} role, then the goal can be assigned to all the roles that are instances of, i.e. extend from, that abstract role.
 
 
-% \subsection{Organization Structure}
-% \subsection{Collective Goals}
-% \subsection{Goals Allocation}
+\section{Main Components and Architecture}
+During the design process, it was also necessary to identify all the software components that would be needed to address the requirements of the system.
+The choice of the components was made trying to optimize the separation of responsibilities and to minimize the coupling between the different components, thus obtaining a clean and expandable architecture.
 
-\section{Main Components}
-\subsection{Web-Based IDE}
-\subsection{Storage Backend}
+\subsection{Web-based IDE}
+This component represents the front end and it is the main interface through which the user interacts with the system.
+
+As already mentioned, the Web-based IDE allows the users to create and edit the organization specifications through a user-friendly and intuitive graphical interface.
+Specifically, since the designed visual language includes two diagrams, the IDE provides the user with two different views to edit the structural and functional diagrams, respectively.
+
+What is more, the IDE is also responsible for the translation of the organization specifications from the visual language to a format that can be understood by the JaCaMo platform.
+In particular, the translation happens from and to the XML format, which is the format used to represent the organization specification in \moise{}.
+This allows the user to easily import and export the specifications.
+
+Finally, the IDE provides the user with the possibility to run the organization created and enforce it on the agents currently running in the runtime environment.
+Therefore, the component includes an additional view that allows the user to directly interact with the agents.
+
+\subsection{Storage \& Backend}
+Since the user should be able to save the organization specifications and load them later, the system needs a component that is responsible for the persistence of the data.
+This component should therefore provide basic CRUD functionalities for the organization specifications.
+
+Since the data to be stored is not very complex and structured, but rather consists of strings representing the XML files, the choice was made to use a NoSQL database.
+In particular, the choice fell on a document-oriented database because of its simplicity and the fact that it is possible to define flexible schemas that allow for the data model to evolve as applications need change.
+
+Together with the storage component, the system also includes a \textit{backend}.
+The latter has a twofold purpose:
+\begin{itemize}
+    \item It serves as a proxy between the Web-based IDE and the storage component, thus hiding the details of the storage mechanism from the IDE.
+    \item It provides an URL to the runtime environment through which the latter can retrieve the organizations' files.
+\end{itemize}
+To achieve the above goals, the backend component exposes an HTTP API.
+This approach allows the Web-based IDE to perform operations on the stored data in a REST-like fashion and the runtime environment to retrieve organization specifications treated as resources, therefore adhering to the Web architecture.
+
+\subsection{Runtime Environment}
+This component is responsible for the execution of a MAS and therefore hosts the agents that are currently running.
+Thus, it will be also in charge of keeping track of the runtime information about the organizations and making the agents aware of them.
+In order for the organization to be enforced on the agents, the Web-based IDE needs to communicate with the runtime environment and send the organization entities to it.
+
+What is more, the Web-based IDE also needs to be able to retrieve information about the running agents so that users can directly assign roles to them when specifying the organization entities.
+
+Finally, the runtime environment should communicate with the backend component in order to retrieve the organization specifications files using URLs.
+URLs are provided by the Web-based IDE when the latter sends an organization entity to the runtime environment.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/architecture.eps}
+    \caption{Overall architecture of the system.}
+    \label{fig:architecture}
+\end{figure}

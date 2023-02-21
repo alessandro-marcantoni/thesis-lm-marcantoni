@@ -1,0 +1,13 @@
+@startuml architecture
+
+database "Specifications'\n      Storage" as db
+component "Specifications'\n      Backend" as be
+component "      Web Based\nOrganizations IDE" as ide
+control "Yggrasil\nRuntime" as run
+
+db <-right- be : "Organization\nSpecifications"
+be <-down- ide : "Organization\nSpecifications"
+ide -right-> run : "Organization\nEntities"
+run --> be
+
+@enduml
