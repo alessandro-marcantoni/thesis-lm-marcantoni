@@ -11,12 +11,30 @@
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
-  numbers=none,
+  numbers=left,
   numberstyle=\tiny\color{gray},
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=2
 }
+
+\lstdefinelanguage{TypeScript}{
+  keywords={undefined, typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, export, const, string, this},
+  ndkeywords={},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=flexible
+}
+
+\lstdefinelanguage{Turtle}{
+  keywords={workspaces, 102, type, WorkspaceArtifact, Workspace, Thing, directlyContains, hypermedia_body_1, hypermedia_body_2, hasActionAffordance}
+}
+
