@@ -1,0 +1,9 @@
+<workspaces/102>  rdf:type  eve:WorkspaceArtifact ,
+                            <Workspace> ,
+                            td:Thing ;
+                  <directlyContains>  <hypermedia_body_1> ,
+                                      <hypermedia_body_2> ;
+                  td:hasActionAffordance [
+                                            ...
+                  ];
+                  ...

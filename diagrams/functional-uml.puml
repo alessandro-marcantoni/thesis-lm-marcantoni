@@ -1,0 +1,20 @@
+@startuml
+
+class Goal {
+    name: string
+    dependencies: Goal[]
+    operator: Operator
+    responsibles: Role[]
+}
+
+enum Operator {
+    AND, OR
+}
+
+class Role
+
+Goal  o-- Goal
+Operator -- Goal
+Role --o Goal
+
+@enduml

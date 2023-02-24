@@ -1,0 +1,20 @@
+@startuml web-ide
+
+hide empty description
+
+state "Home Page" as home
+state "Defining Organization Specification" as def {
+    state "Defining Organization's Structure" as structure
+    state "Defining Organization's Behavior" as behavior
+    [*] --> structure
+    structure -down-> behavior
+    behavior -up-> structure
+}
+state "Defining Organization's Entity" as entity
+
+[*] -right-> home
+home -right-> def : Create or select\nan organization
+def -right-> entity : Done with the\nspecification
+entity -right-> [*] : Deploy entity on\nthe runtime\nenvironment
+
+@enduml

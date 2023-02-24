@@ -1,0 +1,29 @@
+@startuml org-creation
+
+IDE -> Yggdrasil : create organization
+control Agent
+create OrgBoard
+Yggdrasil -> OrgBoard : create artifact
+
+IDE -> Yggdrasil : create group
+Yggdrasil -> OrgBoard : add group
+create GroupBoard
+OrgBoard -> GroupBoard : create artifact
+
+IDE -> Yggdrasil : agent plays role in group
+Yggdrasil -> Agent : adopt role in group
+Agent -> GroupBoard : adopt role
+
+IDE -> Yggdrasil : create scheme
+Yggdrasil -> OrgBoard : add scheme
+create SchemeBoard
+OrgBoard -> SchemeBoard : create artifact
+
+IDE -> Yggdrasil : add scheme to group
+Yggdrasil -> GroupBoard : add scheme
+create NormativeBoard
+GroupBoard -> NormativeBoard : create artifact
+NormativeBoard -> Agent : commit to missions
+Agent -> Agent : achieve missions' goals
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+
+abstract class Role {
+    name: string
+    extends: string?
+}
+class Group {
+    name: string
+    subgroups: Group[]
+    roles: Role[]
+    constraints: Constraint[]
+}
+class AbstractRole
+class ConcreteRole
+abstract class Constraint
+class Compatibility {
+    fromRole: string
+    toRole: string
+}
+
+Role <|-- AbstractRole
+Role <|-- ConcreteRole
+Constraint <|-- Compatibility
+Group *-left- Role
+Group *-- Constraint
+Group *-- Group
+
+@enduml
