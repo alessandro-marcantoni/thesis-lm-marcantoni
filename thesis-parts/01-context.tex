@@ -113,7 +113,7 @@ This proposal makes the development of software agents easier in two ways:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/blocks-example.png}
+    \includegraphics[width=0.9\linewidth]{images/blocks-example.png}
     \caption{Example of a ``ping'' agent implemented with the block language. Adopted from~\cite{burattini2022agent}.}
     \label{fig:blocks-example}
 \end{figure}
@@ -129,8 +129,30 @@ Although the above block-based visual development environment is suitable for de
 When dealing with multiple agents in a MAS, the complexity of the system increases dramatically and the coordination of and interaction among the agents' becomes more and more challenging.
 Even though these aspects could be technically represented and managed directly in the mind of the agents, the adoption of adequate abstractions makes the solution dramatically more straightforward and elegant. \cite{boissier2020multi}
 
+Indeed, multiple approaches to organization in MAS have been reported in the literature.
+However, all of them require significant coding skills and deep knowledge of the underlying concepts and technologies to be implemented.
+Thus, none of these approaches is easy enough to be used by non-technical users such as domain experts.
+
 Therefore, the idea is to design and implement a visual language and a supportive development environment for MAS organizations, which is a novelty to our knowledge.
 The core thesis work will be based on studying the existing organization models, with particular attention to the \moiseplus{} model~\cite{10.1145/544741.544858}, and developing an appropriate representation that could provide a suitable tradeoff between the expressiveness of code-based specifications and the ease of use of graphic programming interfaces.
-A qualitative evaluation is also planned to receive feedback for the developed framework and to study how non-technical users solve problems by exploiting the visual language.
 
-The following chapter provides an introduction to the background of the main technologies and research topics explored in the project.
+Such a tool would allow domain experts to easily define the organization of a MAS, without the need to write code.
+From the \textit{IntellIoT} project's perspective, this would allow addressing more complex scenarios, therefore expanding the range of applications of the IoT framework it aims to create.
+Indeed, for the time being, the applications mainly concern the programming of single agents, which reduces the potential of the technology because of the limited interaction and coordination capabilities that this approach allows.
+
+Moreover, the adoption of a visual language would provide a valuable tool to monitor and debug the system, learn the concepts behind the technology, and hopefully bring new users to the field of MAS.
+
+The thesis project will end with the implementation of a prototype that allows users to define the organization of a MAS by using the developed visual language.
+In particular, the aspects of the organization that will be covered, and thus the users will be able to specify, are:
+\begin{itemize}
+    \item \textbf{Structure}: This part is responsible to define how agents should be organized in the system, i.e., how they should be grouped and how they should interact with each other;
+    \item \textbf{Behavior}: This aspect regards the definition of the common goals that the agents have to achieve, and how agents should coordinate their actions to achieve them;
+    \item \textbf{Rules}: This concept concerns the norms that regulate the agents' behavior.
+    In particular, they represent what agents are and are not allowed to do, or what they are obliged to do.
+\end{itemize}
+
+To evaluate the developed tool, a qualitative evaluation is planned to receive feedback for the developed language and development environment and to study how non-technical users solve problems by exploiting the visual language.
+Moreover, the visual language will be used and tested with a real-world scenario to evaluate the correctness of the resulting MAS.
+This twofold evaluation will allow assessing the user-friendliness of the developed tool on the one hand, and its expressivity and potential on the other.
+
+Before proceeding with the technical description of the designed language and the implemented prototype, the following chapter provides an introduction to the background of the main technologies and research topics explored in the thesis project.
