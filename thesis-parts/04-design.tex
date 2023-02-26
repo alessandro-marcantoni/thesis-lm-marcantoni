@@ -85,8 +85,41 @@ Therefore, the plans can be formalized as:
     \text{\texttt{sv}} = \text{\texttt{wsec}}, \text{\texttt{wcon}}, \text{\texttt{wref}} \nonumber
 \end{gather}
 
+\subsection{Focus Group}
+To better understand how people perceive an organization from a visual point of view, a focus group was organized.
+The latter was composed of 5 people, all members of the research group in St.\ Gallen and therefore with a background in computer science.
+
+However, four of them were not familiar with the \moise{} tool since they had never used it, while one of them uses it on a nearly daily basis.
+This choice was thought to be the most appropriate since it allowed having most of the feedback from non-biased users and one from an experienced and knowledgable user of MAS organizations.
+
+The members of the focus group were asked to perform a task that involved formalizing an organization for a smart-farming scenario that was presented to them and that will be described in detail in \cref{chap:evaluation}.
+
+In particular, they were asked to first identify the core concepts of the organization such as the roles, the groups, and the tasks that the scenario suggested.
+Then, they were asked to give a visual representation of the core concepts and the relations among them, such as the membership of a role in a group, the dependencies among tasks, the assignation of tasks to roles, etc.
+
+The members carried out the task individually for multiple reasons:
+\begin{itemize}
+    \item they could freely express their thoughts and ideas;
+    \item they would not be influenced by the ideas of the other members;
+    \item their mental process could be observed and analyzed.
+\end{itemize}
+Indeed, one of the main goals of the focus group was to understand how people reason when they have to formalize an organization so that the Web IDE could be designed accordingly to provide a natural workflow.
+Therefore, the members were asked to think aloud while they were performing the task so that their mental processes could be clearly understood.
+
+After the experiment, the results were analyzed and the main common grounds were identified.
+
+The totality of the members of the focus group managed to identify most of the core concepts of the organization, particularly excelling in the identification of the tasks.
+
+As far as the roles are concerned, the members were able to identify them but with different strategies.
+Indeed, some of them identified the roles based on the function that they perform, while others identified them based on the characteristics of the agents that are supposed to play them.
+
+Even though the identification of the groups was not as straightforward as expected, once done the members were able to correctly identify the relations among the roles and the groups.
+
+Finally, what the members struggled the most with was the identification of the relations among the tasks.
+In particular, they had difficulties expressing the latter's dependencies because they were mostly focused on a sequential execution of the tasks, which is not always the case in the smart-farming scenario they were presented.
+
 \section{Visual Language Design}
-Once the main concepts were extrapolated both from a syntactical and semantic point of view and their visual representation was analyzed, the design process of the visual language started.
+Once the main concepts were extrapolated both from a syntactical and semantic point of view, their visual representation was analyzed, and the results from the focus group were reviewed, the design process of the visual language started.
 
 One of the first crucial decisions was to keep the structure and the behavior of the organization separate, as it is done in \moise{}.
 This choice was made because it allows the user to focus on one aspect at a time, thus making them feel not overwhelmed by the complexity of the tool.
