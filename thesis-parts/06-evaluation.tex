@@ -9,14 +9,90 @@ In particular, the evaluation is divided into two parts:
 \end{enumerate}
 As already mentioned, this twofold evaluation approach allows for assessing the user-friendliness of the development environment and the effectiveness of the visual language on one hand, and the expressivity and correctness of the latter on the other.
 
-\section{Case Study - Smart Farming}
+\section{Case Study}
 In order for users to have a real-world problem to solve, both during the design phase with the focus group and during the evaluation phase with the end users, a use-case scenario was developed.
+
+\subsection{Smart-Farming Scenario}
 
 Since the \textit{IntellIoT} project already defines three sectors of application, namely \textit{Agriculture}, \textit{Healthcare} and \textit{Manufacturing}, the most natural choice was to use one of them to frame the case study.
 The \textit{Agriculture} sector was chosen for multiple reasons.
 First of all, it is probably the most familiar to the research group thanks to recent projects.
 Moreover, it involves concepts that are easy to understand even for non-experts and it is possibly the most diverse.
 
-Therefore, the case study was developed around the \textit{Smart Farming} scenario where the aim is to define an organization for a typical farm that adopts IoT technologies.
+Therefore, the case study was developed around the \textit{Smart Farming} scenario where the aim is to define an organization for a typical farm that adopts IoT technologies. Here is reported the text of the scenario:
+
+\begin{quote}
+Thanks to his investments, the farmer obtained the most cutting-edge technology machines to make his life easier.
+After obtaining this technology, the farmer wants to organize the management of the daily chores of his ``smart farm'' by exploiting the machinery he possesses, which includes a self-driving tractor, multiple drones, an automatic irrigation system, and devices to take care of the animals.
+
+With the acquired machinery, the farmer must irrigate the fields, which is highly demanding.
+Therefore, the farmer purchased drones to improve the process of checking the soil and gathering information such as temperature and humidity, which the irrigator can use to calculate the amount of water needed.
+The drones not employed for the former tasks will eliminate the moths and bugs that haunt the cultivation.
+
+In addition, the farm always has a field that is currently not used to grow any crop.
+However, the tractor must still plow the soil in that field.
+To perform this function, it will need a set of waypoints.
+The tractor can either have them computed by a drone flying over the field or as direct input from the farmer.
+
+Finally, the farmer wants to harvest mature fruit and vegetables (we can assume that the tractor knows how to harvest).
+After the harvest, the tractor can spray the field with pesticides to protect the crop.
+
+As far as the animals are concerned, the farmer wants to feed them and have a daily health check-up for every animal. 
+Moreover, he wants to collect the eggs from the hens and milk the cows and the goats.
+It is worth mentioning that, during years of experience, the farmer noticed that feeding the animals before their health check-up makes them quieter, and the cows and the goats calmer when they get milked.
+\end{quote}
+
+\subsection{Use-Case Analysis}
+Although not only one solution is possible for this example, here a reference one is described.
+The approach to the problem, analogous to the one explicitly suggested to the focus group and to end users, consists of the following steps:
+\begin{itemize}
+    \item identify the roles of the organization;
+    \item identify the groups of the organization;
+    \item identify the tasks to be performed and possible relations between them;
+    \item identify which roles are responsible for the tasks.
+\end{itemize}
+
+\subsubsection{Roles}
+The approach to the problem starts by identifying the roles of the organization.
+The ones defined for the case study are:
+\begin{itemize}
+    \item \textbf{Tractor Pilot} which will be played by agents that can drive a tractor.
+    This role is abstract and can be specialized in:
+    \begin{itemize}
+        \item \textbf{Soil Plower}: played by an agent capable of plowing the soil;
+        \item \textbf{Harvester}: played by an agent that can harvest the crops;
+    \end{itemize}
+    \item \textbf{Drone Pilot} which, in an analogous way to the tractor pilot, will be played by agents that can control a drone.
+    Even this role is abstract and can be specialized in:
+    \begin{itemize}
+        \item \textbf{Temperature Checker}: played by an agent that can measure the temperature;
+        \item \textbf{Humidity Checker}: played by an agent that can measure the humidity;
+        \item \textbf{Bugs Eliminator}: played by an agent that can kill bugs;
+    \end{itemize}
+    \item \textbf{Irrigation System}: played by an agent that can irrigate the fields;
+    \item \textbf{Animal Feeder}: played by an agent that can feed the animals;
+    \item \textbf{Vet}: played by an agent that can perform a health check-up on the animals;
+    \item \textbf{Product Collector}: played by agents that can collect the products from the animals.
+    It is an abstract role that can be specialized in:
+    \begin{itemize}
+        \item \textbf{Egg Collector}: played by an agent that can collect the eggs from the hens;
+        \item \textbf{Milk Collector}: played by an agent that can collect the milk from the cows and the goats;
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Groups}
+Once the roles are identified, the next step is to identify the groups of the organization.
+In particular, the groups are defined as follows:
+\begin{itemize}
+    \item \textbf{Farm Group}: it is a group of agents that can perform the tasks related to the farm.
+    In this scenario, there are no roles that directly belong to this group.
+    However, it contains the following subgroups:
+    \begin{itemize}
+        \item \textbf{Field Group}: a group of agents that can perform the tasks related to the fields.
+        The roles that belong to this group are: \textit{Soil Plower}, \textit{Harvester}, \textit{Temperature Checker}, \textit{Humidity Checker}, \textit{Bugs Eliminator}, and \textit{Irrigation System};
+        \item \textbf{Animal Group}: a group of agents that can perform the tasks related to the animals.
+        The roles that belong to this group are: \textit{Animal Feeder}, \textit{Vet}, \textit{Egg Collector}, and \textit{Milk Collector}.
+    \end{itemize}
+\end{itemize}
 
 \section{Outcome Analysis}
