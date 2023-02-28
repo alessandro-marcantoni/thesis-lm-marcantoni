@@ -91,8 +91,216 @@ In particular, the groups are defined as follows:
         \item \textbf{Field Group}: a group of agents that can perform the tasks related to the fields.
         The roles that belong to this group are: \textit{Soil Plower}, \textit{Harvester}, \textit{Temperature Checker}, \textit{Humidity Checker}, \textit{Bugs Eliminator}, and \textit{Irrigation System};
         \item \textbf{Animal Group}: a group of agents that can perform the tasks related to the animals.
-        The roles that belong to this group are: \textit{Animal Feeder}, \textit{Vet}, \textit{Egg Collector}, and \textit{Milk Collector}.
+        The roles that belong to this group are \textit{Animal Feeder}, \textit{Vet}, \textit{Egg Collector}, and \textit{Milk Collector}.
     \end{itemize}
 \end{itemize}
 
-\section{Outcome Analysis}
+\subsubsection{Tasks/Goals}
+The next step involves identifying the tasks, or goals, to be performed and the possible relations between them.
+
+The first goal encountered is \textit{Irrigate Field}.
+However, the latter needs some intermediate steps to be achieved and, therefore, it has dependencies on other goals.
+In particular, the \textit{Calculate Water} is needed so that the irrigator knows how much water to use.
+In turn, the \textit{Calculate Water} goal needs the \textit{Measure Temperature} \textbf{and} \textit{Measure Humidity} goals to be achieved.
+
+Proceeding with the scenario, the next goal is \textit{Eliminate Bugs}.
+The \textit{Eliminate Moths} goal could be also identified, but, for simplicity, it is not considered.
+
+The next goal is \textit{Plough Field} that needs either the \textit{Compute Waypoints} or the \textit{Input Waypoints} goals to be achieved, therefore it depends on them with an \textbf{or} relation.
+
+Next, the \textit{Harvest} goal is identified, which also enables the \textit{Spray Pesticides} goal.
+
+Finally, the goals concerning the animals are defined.
+In particular, the \textit{Feed Animals}, \textit{Health Check-Up}, and \textit{Collect Products} goals are identified.
+The latter can be further specialized in \textit{Collect Eggs} and \textit{Collect Milk}.
+In turn, \textit{Collect Milk} needs the \textit{Milk Cows} and \textit{Milk Goats} goals to be achieved.
+Moreover, the \textit{Feed Animals} goal enables all the other goals related to the animals.
+
+As far as the assignation of the goals to the roles is concerned, \cref{tab:goal-assignation} shows the result of the analysis:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| l | l |}
+        \hline
+        \textbf{Goal} & \textbf{Responsible Role} \\
+        \hline
+        Irrigate Field & Irrigation System \\
+        Calculate Water & Irrigation System \\
+        Measure Temperature & Temperature Checker \\
+        Measure Humidity & Humidity Checker \\
+        Eliminate Bugs & Bugs Eliminator \\
+        Plough Field & Soil Plower \\
+        Compute Waypoints & Drone Pilot \\
+        Harvest & Harvester \\
+        Spray Pesticides & Tractor Pilot \\
+        Feed Animals & Animal Feeder \\
+        Health Check-Up & Vet \\
+        Collect Products & Product Collector \\
+        Collect Eggs & Egg Collector \\
+        Collect Milk & Milk Collector \\
+        Milk Cows & Milk Collector \\
+        Milk Goats & Milk Collector \\
+        \hline
+    \end{tabular}
+    \caption{Assignation of the goals to the responsible roles.}
+    \label{tab:goal-assignation}
+\end{table}
+
+\section{Solution with the Visual Language}
+In this section, a solution for the above scenario using the developed visual language is presented.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/solution-structural.png}
+    \caption{Solution for the structure of the organization.}
+    \label{fig:solution-structural}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/solution-functional.png}
+    \caption{Solution for the behavior of the organization.}
+    \label{fig:solution-functional}
+\end{figure}
+
+\section{Users' Test}
+Due to the shortage of time, it was nearly impossible to gather a large number of users to test the developed visual language.
+Moreover, even though the target users for the system are domain experts, finding them and having them test the system would not have been feasible.
+
+Thus, the users' test was performed on a small number of people from the research group.
+Since the users have a background in computer science and some of them are familiar with the domain of the scenario, the result was expected to be slightly optimistic but still useful to evaluate the usability of the system.
+
+\subsection{Test Description}
+The test consisted in asking the users to provide a solution for the smart-farming scenario using the Web IDE and therefore exploiting the designed visual language.
+The vast majority of the users were already familiar with the scenario since they participated in the focus group sessions that helped the design of the visual language itself.
+They were also asked to think aloud while they were building the solution, so that possible doubts could be clarified, mainly about the meaning of the concepts of the organization model such as roles, groups, and goals.
+
+After the users had provided their solutions, they were asked to provide feedback through a short questionnaire.
+The latter was composed of a few questions about every step of the process, from the identification of the core concepts of the organizations to the use of the Web IDE to build the solution.
+
+The questions were designed to evaluate the usability of the system and the visual language on one hand, and the effectiveness of the organization model on the other, that is the ability of the model to represent the organization in a way that is natural and understandable for the users.
+Specifically, the questions were modeled as statements such as \textit{It was easy for me to identify what roles are needed in the organization} and \textit{It was easy for me to create the roles using the IDE}.
+
+The participants were asked to rate the statements on a scale from $1$ to $5$, where $1$ means that they strongly disagreed with the statement and $5$ means that they strongly agreed with the statement.
+
+\subsection{Results}
+Even though some of the users needed some hints to get started, all of them were able to provide a solution for the scenario in an acceptable amount of time, with the average time being around $25$ minutes.
+
+All the solutions provided by the users produce a syntactically correct organization specification, which means that no errors will be encountered when the system tries to deploy the organization.
+However, the solutions provided by the users are not all necessarily semantically correct, that is, they might not represent the organization in a way that completely matches and satisfies the requirements of the scenario.
+
+What the users most struggled with was the identification of the roles and the groups.
+Specifically, they had difficulties in distinguishing the concepts of agents and the roles played by them.
+Moreover, some of them had difficulty understanding that roles have to be inserted in groups.
+On the other hand, the users easily understood the concept of goals and were able to identify them in the scenario together with the relations between them.
+
+However, once the users were explained the meaning of the concepts and some fundamentals of the organization model, they were able to provide a solution for the scenario in a short amount of time.
+
+As far as the use of the Web IDE is concerned, all the users had no issues in creating the visual components and interacting with them.
+What is more, the navigation through the different pages of the IDE was straightforward for all the users.
+
+Therefore, these results show that the visual language is intuitive and that the Web IDE is easy to use.
+As far as the organization model is concerned, it appears to be effective in representing the organization powerfully and flexibly, even though some of the users do not inherently reason about organizations in terms of the model's concepts.
+Nevertheless, it turned out to be simple enough to be easily understood by the users when they are briefly introduced to the main concepts.
+
+In \cref{fig:questionnaire-results-model} and \cref{fig:questionnaire-results-ui} the ratings of the statements are shown.
+The first figure shows the results for the statements related to the organization model, that is the identification of the core concepts of the organization.
+On the other hand, the second figure shows the results for the statements related to the use of the Web IDE.
+Each color represents a step of the process of the test, that is, the identification and creation of the roles, groups, goals, dependencies among goals, and the assignation of goals to roles, respectively.
+
+According to the feedback provided by the users, the result of the test is extremely positive.
+As already stated, the results were expected to be slightly optimistic since the users are familiar with the domain and the organization model.
+However, the results show that the organization model is effective in representing the organization and that the visual language is intuitive and easy to use.
+
+Finally, it is worth noting that the user that provided the most complete solution for the scenario was a computer science student that had never heard of MAS organizations before, proving that there is no need for a specific background and previous experience to define one.
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{axis} [ybar,width=\linewidth,height=8cm,legend pos=north west]
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \legend {Roles, Groups, Goals, Dependencies among goals, Goals assignation to roles};
+    \end{axis}
+    \end{tikzpicture}
+    \captionof{figure}{Average rating of the statements concerning the identification of the main concepts of the organization model.}
+    \label{fig:questionnaire-results-model}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{axis} [ybar,width=\linewidth,height=8cm,legend pos=north west]
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \addplot coordinates {
+        (1,0.5) 
+        (2,2.5) 
+        (3,2) 
+        (4,3)
+        (5,5)
+    };
+    \legend {Roles, Groups, Goals, Dependencies among goals, Goals assignation to roles};
+    \end{axis}
+    \end{tikzpicture}
+    \captionof{figure}{Average rating of the statements concerning the ease of use of the Web IDE when defining the concepts.}
+    \label{fig:questionnaire-results-ui}
+\end{center}
+
