@@ -125,6 +125,28 @@ In \cref{lst:code-serialization} and \cref{lst:code-deserialization} are shown t
     \lstinputlisting[language=Typescript,label={lst:code-deserialization},caption={Parsing of the XML specification of a role inside a group}]{code/deserialization.ts}
 \end{figure}
 
+As far as the goal dependencies are concerned, a one-to-one mapping was not possible since the visual language's semantics differs from the one used by \moise{}.
+Specifically, the visual language does not allow for the creation of plans and subgoals that are not associated with a specific goal with a plan operator.
+In order to overcome this incompatibility, the \textit{depends-on} concept of \moise{} was used.
+Although it is usually not directly used in the XML specifications, \textit{depends-on} is a fundamental concept of \moise{} which plans and subgoals are built upon.
+
+Therefore, this concept is used as a mapping between the visual language and the XML syntax.
+In particular, when expressing the \textit{and} dependency, a simple \textit{depends-on} tag is created between the two goals.
+On the other hand, when expressing the \textit{or} dependency, an intermediate goal is created with a \textit{choice} plan.
+
+For instance, in \cref{lst:goals-and} is shown the XML translation of an \textit{and} dependency between the goals \textit{g1}, \textit{g2} and \textit{g3} of the type:
+$$g3 = g1 \wedge g2$$
+whereas in \cref{lst:goals-or} is shown the XML translation of an \textit{or} dependency between the goals \textit{g1}, \textit{g2} and \textit{g3} of the type:
+$$g3 = g1 \vee g2$$
+
+\begin{figure}
+    \lstinputlisting[language=XML,label={lst:goals-and},caption={XML translation of an \textit{and} dependency.}]{code/goals-and.xml}
+\end{figure}
+
+\begin{figure}
+    \lstinputlisting[language=XML,label={lst:goals-or},caption={XML translation of an \textit{or} dependency.}]{code/goals-or.xml}
+\end{figure}
+
 \section{Storage \& Backend}
 Organizations can be saved persistently to be later recovered and edited.
 This feature is fundamental for the Web IDE since writing a specification is commonly an iterative process that may require the domain expert to edit some parts of an organization either for bug-fixing or to add new features.
@@ -226,3 +248,15 @@ In \cref{fig:org-creation} the typical deployment process of a simple organizati
     \item If the agents are obliged to achieve the goals, they will proceed to do so.
     On the other hand, if the agents are permitted to achieve the goals they will do so only if they have an interest in it.
 \end{enumerate}
+
+% \section{DevOps}
+% In order to 
+
+% In order to make the deployment of the whole system easier, every component has been containerized using \textit{Docker}~\footnote{\url{https://www.docker.com/}}.
+% Therefore, a \texttt{Dockerfile} was created for each component, except for the storage component, which only needed the \texttt{mongo} image.
+
+% Moreover, since running every single container with its parameters would be tedious and error-prone, a \textit{Docker Compose}~\footnote{\url{https://docs.docker.com/compose/}} file was created to make the deployment possible with a single command.
+
+% Indeed, the \texttt{docker-compose.yml} file contains all the necessary information to run the whole system,
+% such as the images and the build files to use, the ports to expose, the environment variables to set, and the volumes to mount.
+% What is more, it takes care of creating a bridge network that allows the containers to communicate with each other.

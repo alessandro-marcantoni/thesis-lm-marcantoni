@@ -1,0 +1,11 @@
+<goal id="g1" />
+<goal id="g2" />
+<goal id="or_g3">
+    <plan operator="choice">
+        <goal id="g1" />
+        <goal id="g2" />
+    </plan>
+</goal>
+<goal id="g3">
+    <depends-on goal="or_g3" />
+</goal>
