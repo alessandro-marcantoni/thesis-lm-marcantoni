@@ -2,4 +2,50 @@
 \addcontentsline{toc}{chapter}{Conclusions}
 \markboth{CONCLUSIONS}{CONCLUSIONS}
 
-Qui il testo delle conclusioni alla tesi. Non deve essere un riepilogo di quanto fatto nella tesi ma piuttosto le conclusioni raggiunte relative al lavoro svolto.
+\section*{Main Contribution}
+As stated multiple times in this document, the main contribution of the thesis work is the application of visual programming techniques to the Multi-Agent Oriented Programming (MAOP) paradigm aiming at overcoming the challenges that come from the coordination of single entities in a way that is accessible by non-technical domain experts.
+
+This project \hl{is} the natural evolution of the previous work from \cite{burattini2022agent} that was also carried out at the University of St.\ Gallen and that was focused on the development of a visual programming paradigm for software agents.
+Indeed, it moves a step forward toward the vision for an accessible Integrated Development Environment (IDE) that mixes Multi-Agent Oriented Programming and Hypermedia in a seamless interface for both humans and software agents.
+
+The work culminated in the development of a prototype of the system that was tested and evaluated on a sample of users and gave promising results in terms of usability, user-friendliness, and correctness.
+However, a long path was taken to reach this point.
+
+The development steps were first focused on the analysis of the requirements coming from the \textit{IntellIoT} project, the research interest of the hosting group, and the already implemented agent's IDE.
+Then the analysis of the tools and technologies used by the research team brought to the identification of \moise{} and the JaCaMo platform as the candidates to implement the solution.
+
+The next step involved the analysis of the \moise{} specifications, its core concepts, and the gathering of a focus group to identify the building blocks of the visual programming language in a way that would be as understandable as possible for the target users.
+
+The implementation of an interface supporting the usage of the visual language followed, alongside the development of a storage and backend to provide the persistence of the organizations created.
+
+Finally, the Web IDE was integrated with the existing runtime environment to allow the execution of the organizations created by the users, therefore allowing the full cycle of development and deployment of the organizations.
+
+The prototype subsequently underwent an evaluation study, first trying to address a rather complex real-world scenario, and then testing the usability of the system with a small sample of users in contact with the tool for the first time and with little to no explanation of its functionalities.
+
+Overall, this thesis brought to the realization of a usable tool that can be used by non-technical users to create and deploy organizations in a way that is accessible and understandable for them.
+Most important, this opened a lot of potential directions for future work, as the system is still in its early stages on one hand, and it enables new research threads on the other.
+
+\section*{Open Challenges and Future Work}
+Working on a project that touches multiple and diverse research fields, that relies on currently developing technologies, and in an environment that encourages the exploration of new ideas and the interaction with colleagues from different backgrounds and working on different research topics, cannot but result in a continuous flow of new questions and new directions to explore.
+Of course, the thesis work cannot follow all the possible paths and therefore a lot can be done to improve the existing solution and expand it.
+
+First of all, the development of the visual language is an ongoing process that requires more iteration than the ones it was possible to carry out to be able to refine the visual building blocks and make them more intuitive and accessible for the users.
+Indeed, a lot of work is still needed to find the right visual abstractions to represent the core concepts that might require the exploration of different visual paradigms and the gathering of more feedback from the users.
+
+Moreover, some concepts of the \moise{} specifications were purposefully left out of the visual language, both for time constraints and for the need to keep the language as simple as possible.
+However, more advanced users might find it useful to have access to these concepts.
+Therefore, a way to extend the visual language to include them should be explored.
+
+As far as the Web IDE is concerned, the current implementation only supports the creation of organizations and their deployment on the runtime environment.
+However, it would be extremely interesting to add the possibility to monitor the state and development of the organizations and to provide a way to interact with them.
+This way, the user could be involved not only at design time but also at runtime, promoting the human-in-the-loop approach the \textit{IntellIoT} project is based on.
+
+Regarding the runtime environment, for the time being, the user has to manually choose the agents that will participate in the organization and assign them the roles they should play.
+However, it would be interesting to explore the possibility of automatically assigning roles to the agents based on their capabilities.
+Indeed, some members of the research group are currently working on the development of a framework based on costs and rewards that are assigned to the agents when they adopt a certain role and achieve the goals the role is responsible for.
+This is a promising direction toward self-organization and re-organization in Multi-Agent Systems that will be for sure explored in the future.
+
+As far as the technologies used are concerned, lately, a lighter version of \moise{} has been developed, called \moise{} \textit{simple}~\footnote{\url{https://github.com/moise-lang/moise/tree/master/src/main/java/ora4mas/simple}}, that, as the name suggests, should be easier to use for domain experts.
+Therefore, it could be fruitful to compare the two approaches and analyze the tradeoffs in terms of user-friendliness and expressiveness.
+
+Hopefully, given the interest in the project from both the research group in St.\ Gallen and the one in Cesena, some of these directions can be explored in future research projects.
