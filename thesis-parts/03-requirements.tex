@@ -73,7 +73,7 @@ Therefore, a social plan denotes a structure of interrelated organizational goal
 Goals can be gathered together in \textit{missions}, meaning that they should be achieved under the responsibility of a single agent.
 When an agent participates in the organization, it commits to missions, meaning that it will try to achieve the goals contained in them.
 
-All of the above concepts regarding functional abstractions are defined within a \textit{social scheme}, which denotes the collective and coordinated behavior that is expected to be produced by a group of agents in the organization.
+All of the above concepts regarding functional abstractions make up a \textit{social scheme}, which denotes the collective and coordinated behavior that is expected to be produced by a group of agents in the organization.
 
 \subsection{Normative Dimension}
 Whereas structural abstractions address the structuring of the agents in the system and functional abstractions target the coordination of their behavior, normative abstractions are concerned with the regulation of agents' behavior in the organization
@@ -105,24 +105,34 @@ Finally, the \textit{normative entity} is related to group and social scheme ent
 It is created every time a group entity becomes responsible for a scheme entity and it contains the status of a set of norms build from the abstract norms of the normative specification.
 
 \section{Functional Requirements}
-Since the platform needs to be compatible with \moise{}, the final user should be able to:
-\begin{itemize}
-    \item Define the structure of the organization, in particular:
-    \begin{itemize}
-        \item Define the roles that agents can play;
-        \item Define the groups of the organization, with the possibility to nest them;
-        \item Define which roles belong to which groups;
-        \item Define the main links between roles;
-    \end{itemize}
-    \item Define the expected behavior of the agents, which means:
-    \begin{itemize}
-        \item Define the collective goals that agents should achieve;
-        \item Define the dependencies among the goals;
-    \end{itemize}
-    \item Assign the collective goals to roles, thus connecting the structure and the behavior of the organization;
-    \item Save and load the organizations they create for future editing;
-    \item Enforce the organization they create on running agents.
-\end{itemize}
+Since the platform needs to be compatible with \moise{}, its features should be available in the new platform as well.
+
+\paragraph{Structure}{
+    Users should be able to define the structure of the organization.
+    In particular, the abstractions that allow its definition are the roles that agents can play, the groups that can contain roles and possibly nest other subgroups, and the links between roles.
+    As far as the links are concerned, the core subset of \moise{} should be supported, i.e. extension and compatibility.
+}
+
+\paragraph{Behavior}{
+    Users should be able to define the expected behavior of the agents.
+    Specifically, they will be provided with a way to define the collective goals that agents should achieve and the dependencies among them.
+    The type of dependencies supported is \textit{finish-to-start}, meaning that the target goal cannot be pursued until the source goal is achieved.
+}
+
+\paragraph{Goal Assignment}{
+    Users should be able to assign collective goals to roles, thus connecting the structure and the behavior of the organization.
+    Either one, more, or no role can be assigned to a goal and the assignment may have a \textit{obligation} or \textit{permission} deontic modality.
+}
+
+\paragraph{Persistence}{
+    Users should be able to save and load the organizations they create for future editing.
+    Indeed, the platform will provide a way to edit organizations previously created since defining one usually requires multiple iterations and changes.
+}
+
+\paragraph{Deployment}{
+    Users should be able to enforce the organization they create on running agents.
+    In particular, they will choose the agents that will be part of the organization and the roles they will play.
+}
 
 \section{Non-Functional Requirements}
 Given the target user of this platform, i.e. domain experts, the main non-functional requirement is the ease of use and user-friendliness.
