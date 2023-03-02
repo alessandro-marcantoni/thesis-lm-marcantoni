@@ -81,7 +81,7 @@ Moreover, for the pillars to not remain only abstract concepts, various use case
 \end{itemize}
 
 \section{Domain-Expert Programming}
-As already discussed, the crucial role of end-users in the definition of autonomous systems, the importance of their intervention in case of need, and their expertise are utterly unmatched by Artificial Intelligence algorithms and probably will be for a long time.
+As seen in the mission of the \textit{IntellIoT} project, the crucial role of end-users in the definition of autonomous systems, the importance of their intervention in case of need, and their expertise are utterly unmatched by Artificial Intelligence algorithms and probably will be for a long time.
 
 On top of that, the gap between programmers and end-users regarding domain comprehension is a well-acknowledged issue concerning software development.
 Indeed, developers' poor understanding of the domain often results in projects missing their schedules or exceeding their budget, poor-quality software, or even wrong functionalities \cite{5089292}.
@@ -93,15 +93,13 @@ This kind of user can be defined as professionals in some domain different from 
 Given the latter definition and the premise suggesting the importance of domain expertise, providing domain experts with tools, such as domain-specific languages (DSL) or more user-friendly visual tools, that allow them to ``code'' or configure parts of complex systems feels very natural.
 Therefore the need for an intuitive development environment in which users with no proper computer science background can naturally and seamlessly transform their domain knowledge into specifications with low-code (or possibly no-code).
 
-\section{Visual Programming Paradigm}
+\section{Agent-Oriented Visual Programming}
 Multi-Agent Systems is one of the core enabling technologies of the infrastructure of \textit{IntellIoT}.
 MAS fit IoT because they tackle the complexity and handle the decentralization of the IoT ecosystem by providing a framework for coordinating the actions of a large number of devices, allowing the latter to communicate and make decisions toward the achievement of a common goal.
 Another critical advantage of MAS is their ability to deal with partial knowledge, incomplete and imperfect information, and adapt and reason in real-time, which is crucial in dynamic, uncertain, open, and distributed networks.
 
 However, the high-level expertise required to program agent-based systems hinders the large-scale adoption of MAS.
-
-\subsection{Agent-Oriented Visual Programming}
-To facilitate the spread of this technology, efforts have been made to eliminate the entry barrier to MAS development.
+Therefore, to facilitate the spread of this technology, efforts have been made to eliminate the entry barrier to MAS development.
 One example of such endeavor is the development of an agent-oriented programming paradigm \cite{burattini2022agent}, which enables individuals without coding experience, but with knowledge of specific target domains, to design and (re)configure autonomous software.
 
 This proposal makes the development of software agents easier in two ways:
@@ -123,7 +121,7 @@ When started, the agent has a belief that the \texttt{wait\_time} is $2$ seconds
 In addition, the agent is given instructions on how to achieve the goal through a plan.
 The latter states that when the agent decides to achieve the goal \texttt{ping} and knows what the \texttt{wait\_time} is, it should first wait for the time specified in its belief, then send a message to the agent \texttt{pong}.
 
-\subsection{Proposing a Visual Programming Paradigm for Organizations}
+\section{Proposing a Visual Programming Paradigm for Organizations}
 Although the above block-based visual development environment is suitable for defining single entities, a level of abstraction to handle the relations among and coordination of the latter is still missing.
 
 When dealing with multiple agents in a MAS, the complexity of the system increases dramatically and the coordination of and interaction among the agents' becomes more and more challenging.
