@@ -88,7 +88,7 @@ An agent organization can be defined as a social entity composed of a specific n
 All MAS possess some form of organization, although it may be implicit and informal.
 
 \subsubsection{Approaches to Organization in MAS}
-There are two approaches to MAS engineering.~\cite{Ahmed_Abbas_2015}
+There are two approaches to organizing agents in a MAS.~\cite{Ahmed_Abbas_2015}
 The first one regards \textit{agent-centered} MAS, in which the focus is given to individual agents.
 According to this viewpoint, the designer should concern about the local behavior of the agents and their interactions without worrying about the global structure and goal of the system as the latter should emerge as a result of the lower-level individual interactions in a bottom-up fashion.
 The key issues of this approach are unpredictability and uncertainty since it could lead to undesirable emergent behaviors.
@@ -202,11 +202,12 @@ Indeed, sometimes two or more organizational paradigms may be combined to form a
 
 \subsection{The JaCaMo Platform}
 Regarding the engineering and implementation of MAS, one of the reference technologies is the JaCaMo platform~\cite{Boissier2016}, which supports practical programming based on the first-class abstractions introduced before to develop organized agents situated in a shared environment.
+Therefore, the platform gives convenient tools to program agents, their environment, and the organizations they belong to.
 JaCaMo is built on top of three other existing platforms:
 \begin{itemize}
     \item \jason{}: provides a programming language to code autonomous intelligent agents based on the BDI (Belief, Desire, Intention) architecture~\cite{bordini2007programming}\cite{Bratman1987-BRAIPA}.
     \item \cartago{}: as the way to define the environment in which agents will be situated, following the \textit{A\&A} metamodel~\cite{Ricci2009}.
-    \item \moise{}: based on the \moiseplus{} model~\cite{10.1145/544741.544858}, it allows the definition and management of organizations within the systems~\cite{doi:10.1504/IJAOSE.2007.016266}.
+    \item \moise{}: based on the \moiseplus{} model~\cite{10.1145/544741.544858}, it allows the explicit definition and management of organizations within the systems~\cite{doi:10.1504/IJAOSE.2007.016266}.
 \end{itemize}
 
 Since the JaCaMo platform was chosen as the enabling tool supporting the instantiation of the organizations built with the visual language developed, the latter takes inspiration from the \moiseplus{} model and its concepts, which are briefly described in the following section.
@@ -269,17 +270,6 @@ Indeed, given the URI of one of the pages, a client can dereference the URI to r
 This action triggers a transition to a new application state which provides the client with a new set of reachable states in the form of hyperlinks to other Web pages; both the next reachable states and the knowledge required to transition to those states are conveyed to the client through hypermedia.
 Therefore, a client should be able to discover new resources and how to use them at runtime, allowing components to be deployed independently from one another.
 
-\subsection{Web-based Multi-Agent Systems}
-There has been extensive research on using the Web as an infrastructure for distributed MAS.
-The early approaches usually fall into one of the following two categories:
-\begin{itemize}
-    \item \textbf{The Web as a Transport Layer}: these systems use HTTP as a transport layer for the communication between agents; thus, they make limited use of the architectural properties of the Web.
-    \item \textbf{The Web as a non Hypermedia Application Layer}: agent services are translated into Web services, which expose REST-like interfaces.
-    However, these systems do not support hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
-\end{itemize}
-
-The premature development of these approaches, not completely adhering to the Web architectural style, and the lack of crucial initiatives such as the Web of Things, together with the shortage of real-world applications, have hindered their widespread acceptance.
-
 \subsection{The Web of Things}
 The Web of Things (WoT)~\cite{wot}, first introduced in 2007~\cite{guinard2011web}, is a set of W3C standards that aim to improve the interoperability and usability of the Internet of Things (IoT).
 The idea is to apply the architectural principles and standardized technologies of the Web to integrate the different technological stacks used by the current IoT \textit{things}.
@@ -293,6 +283,17 @@ The three types of affordances are:
     \item \textbf{Events}: they describe an event source that asynchronously pushes event data to the observers.
 \end{enumerate}
 The affordances of a \textit{thing} are intended in the hypermedia perspective of presenting information and control, suggesting to the clients the possible choices for interaction and how to use them in the form of hyperlinks.
+
+\subsection{Web-based Multi-Agent Systems}
+There has been extensive research on using the Web as an infrastructure for distributed MAS.
+The early approaches usually fall into one of the following two categories:
+\begin{itemize}
+    \item \textbf{The Web as a Transport Layer}: these systems use HTTP as a transport layer for the communication between agents; thus, they make limited use of the architectural properties of the Web.
+    \item \textbf{The Web as a non-Hypermedia Application Layer}: agent services are translated into Web services, which expose REST-like interfaces.
+    However, these systems do not support hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
+\end{itemize}
+
+The premature development of these approaches, not completely adhering to the Web architectural style, and the lack of crucial initiatives such as the Web of Things, together with the shortage of real-world applications, have hindered their widespread acceptance.
 
 \subsection{The Bridge between the Web and Multi-Agent Systems}
 
@@ -327,5 +328,6 @@ The three key design principles meant to ensure the proper use of hypermedia as 
 
 Engineers can choose to ignore one or more of these principles, but the MAS would most likely make limited use of the hypermedia and would not achieve uniform interaction, hindering the scalability and openness of the system.
 
+% semantic web
 % visual programming
 % agent-oriented visual programming
