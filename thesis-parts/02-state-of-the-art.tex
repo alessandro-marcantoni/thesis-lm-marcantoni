@@ -264,8 +264,16 @@ The current technological landscape brings new challenges to the engineering of 
 The Web has had remarkable success as a worldwide and long-lived system of people, providing them with a \textit{distributed hypermedia environment}, composed of interrelated Web pages, that they can navigate and use in pursuit of their goals.
 
 No doubt REST (REpresentational State Transfer), the architectural style of the Web~\cite{fielding2000}, is one of the enabling factors of the above characteristics.
-REST consists of a set of architectural constraints, such as \textit{client-server} and \textit{stateless} interaction, and \textit{uniform interface}.
-To achieve a uniform interface between components, interaction in REST is driven by \textit{hypermedia}, a constraint also known as \textit{Hypermedia As the Engine of Application State (HATEOAS)} that allows loose coupling among components~\cite{Varanasi2015}.
+REST consists of a set of architectural constraints, such as \textit{client-server} and \textit{stateless} interaction, and \textit{uniform interface}~\cite{fielding2002}.
+The latter principle is fundamental for RESTful systems, as it simplifies and decouples the Web architecture, and it is achieved through four constraints:
+\begin{itemize}
+    \item \textit{Identification of resources}: each Web-based concept is modeled as a resource identified by a URI.
+    \item \textit{Manipulation of resources through representations}: clients manipulate representations of resources.
+    The same resource can be represented in different ways, e.g. as HTML, XML, or JSON.
+    The key point is that the representation is a way to interact with a resource but it is not the resource itself.
+    \item \textit{Self-descriptive messages}: each message includes enough information to describe how to process the message.
+    \item \textit{Hypermedia as the engine of application state (HATEOAS)}: the representation of a resource includes links that the client can use to dynamically discover other resources, therefore enabling \textit{hypermedia-driven interaction}~\cite{Varanasi2015}.
+\end{itemize}
 
 According to HATEOAS, a typical Web application, which is composed of multiple hyperlinked Web pages, can be seen as a finite state machine where each page represents a state and hyperlinks between pages represent transitions between states.
 Indeed, given the URI of one of the pages, a client can dereference the URI to retrieve an HTML representation of that page.
