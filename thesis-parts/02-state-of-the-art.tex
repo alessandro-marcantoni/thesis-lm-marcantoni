@@ -276,8 +276,11 @@ The latter principle is fundamental for RESTful systems, as it simplifies and de
 \end{itemize}
 
 According to HATEOAS, a typical Web application, which is composed of multiple hyperlinked Web pages, can be seen as a finite state machine where each page represents a state and hyperlinks between pages represent transitions between states.
-Indeed, given the URI of one of the pages, a client can dereference the URI to retrieve an HTML representation of that page.
-This action triggers a transition to a new application state which provides the client with a new set of reachable states in the form of hyperlinks to other Web pages; both the next reachable states and the knowledge required to transition to those states are conveyed to the client through hypermedia.
+Indeed, given the URI of a page, a client can dereference the URI to retrieve an HTML representation of that page.
+This action triggers a transition to a new application state which provides the client with a new set of reachable states in the form of hyperlinks to other Web pages.
+Similarly, the client can send a request to the server to update a resource, thus triggering a transition to a new state.
+
+The key point is that both the next reachable states and the knowledge required to transition to those states are conveyed to the client through hypermedia.
 Therefore, a client should be able to discover new resources and how to use them at runtime, allowing components to be deployed independently from one another.
 
 \subsection{The Web of Things}
