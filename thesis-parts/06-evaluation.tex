@@ -156,12 +156,32 @@ In this section, a solution for the above scenario using the developed visual la
     \label{fig:solution-structural}
 \end{figure}
 
-\begin{figure}
+In \cref{fig:solution-structural} the solution regarding the structure of the organization is presented.
+The outermost rectangle represents the \texttt{Farm Group} that contains two subgroups, \texttt{Animal Group} and \texttt{Field Group}, depicted by the two inner rectangles.
+The three circles that are not placed inside any group represent the abstract roles \texttt{Product Collector}, \texttt{Tractor Pilot}, and \texttt{Drone Pilot}.
+As for the other roles, they are concrete and therefore placed inside their corresponding group.
+Some of them extend the abstract roles, as is the case of \texttt{Egg Collector} and \texttt{Milk Collector} that extend \texttt{Product Collector}.
+Finally, the cardinality of the roles inside the groups is represented in the form \texttt{\textless min,max\textgreater}.
+For instance, the \texttt{Bugs Eliminator} role has to be played by at least 1 agent and at most 10 agents while all the other roles have to be played by exactly 1 agent.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/solution-functional.png}
     \caption{Solution for the behavior of the organization.}
     \label{fig:solution-functional}
 \end{figure}
+
+As far as the behavior of the organization is concerned, \cref{fig:solution-functional} shows its solution with the visual language.
+For instance, the \texttt{Collect Products} goal requires the \texttt{Collect Milk} and \texttt{Collect Eggs} goals to be achieved, therefore, it depends on them with an \textbf{and} relation.
+The latter is represented by the solid arrows that connect the enabler goals to the enabled goal.
+Indeed, the use of dashed arrows would indicate an \textbf{or} relation, like the one between the \texttt{Compute Waypoints} and \texttt{Input Waypoints} goals and the \texttt{Plough Field} goal.
+In turn, the \texttt{Collect Milk} goal requires the \texttt{Milk Cows} and \texttt{Milk Goats} goals to be achieved.
+Again, the former depends on the latter goals with an \textbf{and} relation.
+Moreover, the \texttt{Milk Cows} and \texttt{Milk Goats} goals need the \texttt{Feed Animals} goals to be achieved in order for them to be pursued.
+Finally, the latter goal also enables the \texttt{Health Check-Up} goal.
+
+To conclude, the assignation of the goals to the roles is represented by the presence of the circle corresponding to the role inside the rectangle representing the goal.
+For instance, the \texttt{Vet} is responsible for the \texttt{Health Check-Up} goal.
 
 \section{Users' Test}
 Due to the shortage of time, it was nearly impossible to gather a large number of users to test the developed visual language.
