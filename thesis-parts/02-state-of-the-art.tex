@@ -305,7 +305,7 @@ The early approaches usually fall into one of the following two categories:
 \begin{itemize}
     \item \textbf{The Web as a Transport Layer}: these systems use HTTP as a transport layer for the communication between agents; thus, they make limited use of the architectural properties of the Web.
     \item \textbf{The Web as a non-Hypermedia Application Layer}: agent services are translated into Web services, which expose REST-like interfaces.
-    However, these systems do not support hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
+    Even tho these systems typically respect the first three uniform interface constraints, they do not support HATEOAS and therefore hypermedia-driven interaction, making clients and servers tightly coupled to one another, which is an important limitation when engineering large-scale, open systems.
 \end{itemize}
 
 The premature development of these approaches, not completely adhering to the Web architectural style, and the lack of crucial initiatives such as the Web of Things, together with the shortage of real-world applications, have hindered their widespread acceptance.
