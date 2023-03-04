@@ -51,6 +51,15 @@ The approach to the problem, analogous to the one explicitly suggested to the fo
     \item identify the tasks to be performed and possible relations between them;
     \item identify which roles are responsible for the tasks.
 \end{itemize}
+In particular, the approach used to solve the case study follows some simple guidelines.
+As far as task decomposition is concerned, there could be different reasons why a task may be split into subtasks.
+For instance, a task may be too complex to be performed by a single agent since it needs the capabilities of multiple agents.
+Another reason may be that a task takes too much time to be performed atomically and it is better to split it into smaller tasks.
+Moreover, a task may be decomposed into subtasks to use the achievement of a subtask as a precondition for the achievement of another task.
+Finally, a task may be split into subtasks to allow for parallel execution of the subtasks by multiple agents.
+
+On the other hand, when it comes to the definition of the roles, the approach mainly relies on the identification of a set of capabilities that the agent playing that role should provide in order to perform the tasks assigned to it.
+For instance, referring to the ``write paper'' example in \cref{fig:moise-visual}, the role of the \texttt{writer} is defined by the capability of writing the sections of a paper, therefore agents playing that role can successfully perform the tasks regarding the writing of the section of the paper.
 
 \subsubsection{Roles}
 The approach to the problem starts by identifying the roles of the organization.
