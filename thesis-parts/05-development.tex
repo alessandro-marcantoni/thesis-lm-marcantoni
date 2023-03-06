@@ -3,7 +3,7 @@
 In the following chapter, the development process that followed the design phase and brought to the creation of the prototype of the whole system is described.
 
 Some technological constraints were imposed from the requirements and the design phase.
-In particular, the need for a lightweight Web application that didn't have to be installed on the user's machine and, from the MAS infrastructure point of view, the need to adhere to the JaCaMo platform, therefore to produce XML \moise{} specifications.
+In particular, the need for a lightweight Web application that didn't have to be installed on the user's machine and, from the MAS infrastructure point of view, the need to make the solution compatible with the JaCaMo platform, therefore to produce XML \moise{} specifications.
 
 The development process was divided into three main parts.
 First, the Web IDE was implemented to get continuous and fast feedback about the visual language.
@@ -14,7 +14,7 @@ The important details and choices about the implementation of the main component
 
 \section{Web-based IDE}
 Given that the main goal of the project is to provide non-technical users with an easy and intuitive tool to create and run organizations, the Web IDE is probably the most important component of the system together with the visual language.
-Therefore, when users are confronted with the UI of the IDE they should be able to clearly understand what each component of the interface means and how to use it without any detailed explanation.
+When users are confronted with the UI of the IDE they should be able to clearly understand what each component of the interface means and how to use it without any detailed explanation.
 
 \begin{figure}
     \centering
@@ -37,8 +37,8 @@ Once the specification is ready, the user can define the organization entity by 
 Therefore, the final UI of the Web IDE consists of four main pages:
 \begin{itemize}
     \item \textbf{Home Page} where the user can specify the name of the organization and create it or select an existing one.
-    \item \textbf{Structural Diagram} where the user can define the structure of the organization.
-    \item \textbf{Functional Diagram} where the user can define the expected behavior of the organization.
+    \item \textbf{Structural Diagram} where the user can define the structure of the organization, thus creating a structural specification.
+    \item \textbf{Functional Diagram} where the user can define the expected behavior of the organization that includes the functional and normative specifications.
     \item \textbf{Entity Definition} where the user can assign the roles to the running agents and deploy the organization.
 \end{itemize}
 
@@ -68,7 +68,7 @@ Here the user can specify which role, if any, the selected role extends from, wh
 The following section describes the main technologies used to implement the Web IDE.
 
 Since the component is based on Web technologies, the main two languages available for the implementation of the client-side logic are \textit{JavaScript}~\footnote{\url{https://developer.mozilla.org/en-US/docs/Web/javascript}} and \textit{TypeScript}~\footnote{\url{https://www.typescriptlang.org/}}.
-The latter was created to address problems coming with developing large-scale applications, introducing static typing and object-oriented features.
+The latter was created to address problems coming with developing large-scale applications, introducing static typing and object-oriented features, thus extending the object-based features already present in JavaScript.
 Typescript's type-checking makes it easier to find and fix bugs, therefore, it was chosen as the language for the implementation of the Web IDE.
 
 Moreover, a client-side framework was used to implement the Web-based IDE.
@@ -166,7 +166,7 @@ Finally, a further improvement of the storage component would be to also allow t
 \subsection{Backend}
 Since, as already mentioned, the Web IDE is based on Web technologies, a backend seemed the most natural choice to make the frontend and the storage communicate.
 
-The backend was implemented using the \textit{Kotlin}~\footnote{\url{https://kotlinlang.org/}} programming language and the \textit{VertX}~\footnote{\url{https://vertx.io/}} library.
+The backend was implemented using the \textit{Kotlin}~\footnote{\url{https://kotlinlang.org/}} programming language and the \textit{Vert.x}~\footnote{\url{https://vertx.io/}} framework.
 The latter is a reactive library that allows the developer to write asynchronous code and build Web servers quickly.
 It was chosen because the research group in St.\ Gallen already had some experience with it, therefore, it would be easier to maintain for other developers.
 In particular, the projects built by the team use \textit{Java}~\footnote{\url{https://java.com/}} as the programming language, therefore, the choice of \textit{Kotlin} was a fair tradeoff that allowed using a language that is similar to \textit{Java} but with a more modern and concise syntax.
@@ -188,10 +188,10 @@ Specifically, it needs information about the running agents to assign them to th
 As already mentioned, the runtime environment, which is based on the JaCaMo platform, contains all the running agents and the deployed artifacts.
 
 This component is currently being developed by the research group in St.\ Gallen.
-The name of the platform is \textit{Yggdrasil}~\footnote{\url{https://github.com/Interactions-HSG/yggdrasil}}, which comes from the mythological tree of life, and it aims at providing uniform interaction among heterogeneous agents thanks to Hypermedia MAS.
+The name of the platform is \textit{Yggdrasil}~\footnote{\url{https://github.com/Interactions-HSG/yggdrasil}}, which comes from the world tree in the Norse mythology, and it aims at providing uniform interaction among heterogeneous agents thanks to Hypermedia MAS.
 The idea is to model an environment based on the Agents \& Artifacts metamodel through hypermedia and Web technologies, achieving scalability and uniform access to resources.
 
-Yggdrasil exposes a REST-like API that allows users and agents to navigate the environment and the existing workspaces where artifacts and their operations are described with the Thing Description standard since the model perfectly fits the Agents \& Artifacts metamodel.
+Yggdrasil exposes a REST-like API that allows users and agents to navigate the environment and the existing workspaces where artifacts and their operations are described with the Thing Description standard since the model fits the Agents \& Artifacts metamodel.
 Moreover, the platform's API also allows the user to run agents and create and deploy artifacts.
 
 The format used by Yggdrasil to describe the resources in the environment is the \textit{Turtle}~\footnote{\url{https://w3.org/TR/turtle/}} format.
@@ -213,7 +213,7 @@ Since this list is composed of URIs, \texttt{GET} requests to them can be perfor
 The response of the \texttt{GET} request to the agents provide useful information for the user such as the name of the agents that can be used to recognize them and assign them to the correct roles.
 
 \subsection{Artifacts Creation}
-Artifacts in Yggdrasil can be created by performing a \texttt{POST} request to the \texttt{workspace/:workspaceName/artifacts} endpoint, specifying all the necessary information in the body of the request.
+Artifacts in Yggdrasil can be created by performing a \texttt{POST} request to the \texttt{workspace/:workspaceName/artifacts/} endpoint, specifying all the necessary information in the body of the request.
 For instance, the body should contain the type of artifact that is being created, the name of the artifact, and possible initial parameters that the artifact may need.
 
 As far as the organizational artifacts are concerned, the types of artifacts available are the same as the ones described in \textsf{ORA4MAS}, therefore \texttt{OrgBoard}, \texttt{GroupBoard}, \texttt{SchemeBoard}, and \texttt{NormativeBoard}.
@@ -221,7 +221,7 @@ Once the \texttt{OrgBoard} artifact is created, the most correct way to generate
 In particular, the \texttt{OrgBoard} artifact exposes the \texttt{createGroup} and \texttt{createScheme} actions that can be used to create the other artifacts.
 A \texttt{NormativeBoard}, on the other hand, is automatically generated when a \texttt{SchemeBoard} is linked to a \texttt{GroupBoard}.
 
-Therefore, to correctly instantiate the organizational artifacts and have them refer to the same organization, the Web IDE has to perform a \texttt{POST} request to the \texttt{workspace/:workspaceName/artifacts} endpoint to create the \texttt{OrgBoard} artifact, and then, once the latter is created, perform a \texttt{POST} request to the \texttt{workspace/:workspaceName/artifacts/:orgName/create*} endpoint to create the other artifacts.
+Therefore, to correctly instantiate the organizational artifacts and have them refer to the same organization, the Web IDE has to perform a \texttt{POST} request to the \texttt{workspace/:workspaceName/artifacts/} endpoint to create the \texttt{OrgBoard} artifact, and then, once the latter is created, perform a \texttt{POST} request to the \texttt{workspace/:workspaceName/artifacts/:orgName/create*} endpoints to create the other artifacts.
 
 \subsection{Organizations' Deployment}
 Deploying an organization is a process that includes the creation of the correct organizational artifacts and the adhesion of the agents to the organization, i.e. playing the established roles in the prescribed groups.
